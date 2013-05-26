@@ -35,4 +35,9 @@ public class ProblemTest {
 	public void testProblem5() {
 		assertEquals("232792560", new Problem5().solve());
 	}
+
+	@Test
+	public void testProblem6() {
+		assertEquals("25164150", new Problem6().solve());
+	}
 }

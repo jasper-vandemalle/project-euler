@@ -15,4 +15,14 @@ public class ProblemTest {
 	public void testProblem1() {
 		assertEquals("233168", new Problem1().solve());
 	}
+
+	@Test
+	public void testProblem2() {
+		assertEquals("4613732", new Problem2().solve());
+	}
+
+	@Test
+	public void testProblem3() {
+		assertEquals("6857", new Problem3().solve());
+	}
 }

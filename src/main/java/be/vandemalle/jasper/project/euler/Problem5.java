@@ -6,7 +6,7 @@ package be.vandemalle.jasper.project.euler;
 import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
 
 /**
- * Solution to Project Euler problem 5
+ * Solution to Project Euler problem 5.
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=5">http://projecteuler.net/problem=5</a>

@@ -4,7 +4,7 @@
 package be.vandemalle.jasper.project.euler;
 
 /**
- * Solution to Project Euler problem 1
+ * Solution to Project Euler problem 1.
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=1">http://projecteuler.net/problem=1</a>

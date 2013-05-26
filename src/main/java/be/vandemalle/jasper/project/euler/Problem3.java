@@ -8,7 +8,7 @@ import java.util.List;
 import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
 
 /**
- * Solution to Project Euler problem 3
+ * Solution to Project Euler problem 3.
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=3">http://projecteuler.net/problem=3</a>

@@ -45,4 +45,19 @@ public class ProblemTest {
 	public void testProblem7() {
 		assertEquals("104743", new Problem7().solve());
 	}
+
+	@Test
+	public void testProblem8() {
+		assertEquals("40824", new Problem8().solve());
+	}
+
+	@Test
+	public void testProblem9() {
+		assertEquals("31875000", new Problem9().solve());
+	}
+
+	@Test
+	public void testProblem10() {
+		assertEquals("142913828922", new Problem10().solve());
+	}
 }

@@ -12,7 +12,7 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * @see <a href="http://projecteuler.net/problem=7">http://projecteuler.net/problem=7</a>
  * 
  */
-public class Problem7 implements Solvable {
+public class Problem007 implements Solvable {
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
@@ -26,6 +26,6 @@ public class Problem7 implements Solvable {
 	 * @param args arguments
 	 */
 	public static void main(String[] args) {
-		System.out.println(new Problem7().solve());
+		System.out.println(new Problem007().solve());
 	}
 }

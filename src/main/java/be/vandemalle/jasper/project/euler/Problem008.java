@@ -10,7 +10,7 @@ package be.vandemalle.jasper.project.euler;
  * @see <a href="http://projecteuler.net/problem=8">http://projecteuler.net/problem=8</a>
  * 
  */
-public class Problem8 implements Solvable {
+public class Problem008 implements Solvable {
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
@@ -70,6 +70,6 @@ public class Problem8 implements Solvable {
 	 * @param args arguments
 	 */
 	public static void main(String[] args) {
-		System.out.println(new Problem8().solve());
+		System.out.println(new Problem008().solve());
 	}
 }

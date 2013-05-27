@@ -1,6 +1,3 @@
-/**
- * 
- */
 package be.vandemalle.jasper.project.euler;
 
 import be.vandemalle.jasper.project.euler.utils.PrimeUtils;

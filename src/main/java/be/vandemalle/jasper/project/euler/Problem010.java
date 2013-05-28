@@ -13,7 +13,7 @@ public class Problem010 implements Solvable {
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
-		int[] primes = PrimeUtils.sieveOfAtkin(2000000 - 1);
+		int[] primes = PrimeUtils.sieveOfAtkin(2_000_000 - 1);
 		long sumOfPrimes = 0;
 
 		for (int prime : primes) {

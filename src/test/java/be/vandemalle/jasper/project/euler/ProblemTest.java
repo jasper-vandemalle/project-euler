@@ -60,4 +60,9 @@ public class ProblemTest {
 	public void testProblem010() {
 		assertEquals("142913828922", new Problem010().solve());
 	}
+
+	@Test
+	public void testProblem011() {
+		assertEquals("70600674", new Problem011().solve());
+	}
 }

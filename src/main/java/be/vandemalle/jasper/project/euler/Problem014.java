@@ -1,7 +1,5 @@
 package be.vandemalle.jasper.project.euler;
 
-import java.math.BigInteger;
-
 /**
  * Solution to Project Euler problem 14.
  * 
@@ -12,12 +10,6 @@ import java.math.BigInteger;
 public class Problem014 implements Solvable {
 	/** The Constant ONE_MILLLION. */
 	private static final int ONE_MILLLION = 1_000_000;
-
-	/** The Constant TWO. */
-	private static final BigInteger TWO = BigInteger.valueOf(2);
-
-	/** The Constant THREE. */
-	private static final BigInteger THREE = BigInteger.valueOf(3);
 
 	/** {@inheritDoc} */
 	@Override
@@ -45,18 +37,15 @@ public class Problem014 implements Solvable {
 	 * @return the Collatz term count
 	 */
 	private static int getCollatzTermCount(long sequenceStart) {
-		long n = sequenceStart;
 		int termCount = 1;
 
-		do {
-			// test the first bit to check if n is even
-			if (n % 2 == 0) {
-				n = evenCollatz(n);
-			} else {
-				n = oddCollatz(n);
-			}
-			termCount++;
-		} while (n > 1);
+		if (sequenceStart == 1) {
+			termCount = 1;
+		} else if (sequenceStart % 2 == 0) {
+			termCount = getCollatzTermCount(evenCollatz(sequenceStart)) + 1;
+		} else {
+			termCount = getCollatzTermCount(oddCollatz(sequenceStart)) + 1;
+		}
 
 		return termCount;
 	}

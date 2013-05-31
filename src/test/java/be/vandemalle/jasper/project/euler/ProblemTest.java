@@ -80,4 +80,9 @@ public class ProblemTest {
 	public void testProblem014() {
 		assertEquals("837799", new Problem014().solve());
 	}
+
+	@Test
+	public void testProblem015() {
+		assertEquals("137846528820", new Problem015().solve());
+	}
 }

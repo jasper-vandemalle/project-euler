@@ -11,13 +11,15 @@ public class Problem014 implements Solvable {
 	/** The Constant ONE_MILLLION. */
 	private static final int ONE_MILLLION = 1_000_000;
 
+	/** The Constant TERM_COUNT_CACHE. */
+	private static final int[] TERM_COUNT_CACHE = new int[ONE_MILLLION / 2];
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
 		int maxTermCount = 0;
 		int numberWithMaxTerms = 0;
 
-		// TODO: optimise by caching terms (and/or term counts)
 		for (int i = 1; i < ONE_MILLLION; i++) {
 			int termCount = getCollatzTermCount(i);
 
@@ -37,7 +39,16 @@ public class Problem014 implements Solvable {
 	 * @return the Collatz term count
 	 */
 	private static int getCollatzTermCount(long sequenceStart) {
-		int termCount = 1;
+		int termCount = 0;
+
+		// check cached values
+		if (sequenceStart < TERM_COUNT_CACHE.length) {
+			termCount = TERM_COUNT_CACHE[(int) sequenceStart - 1];
+		}
+
+		if (termCount != 0) {
+			return termCount;
+		}
 
 		if (sequenceStart == 1) {
 			termCount = 1;
@@ -45,6 +56,11 @@ public class Problem014 implements Solvable {
 			termCount = getCollatzTermCount(evenCollatz(sequenceStart)) + 1;
 		} else {
 			termCount = getCollatzTermCount(oddCollatz(sequenceStart)) + 1;
+		}
+
+		// put the result in the cache
+		if (sequenceStart < TERM_COUNT_CACHE.length) {
+			TERM_COUNT_CACHE[(int) sequenceStart - 1] = termCount;
 		}
 
 		return termCount;

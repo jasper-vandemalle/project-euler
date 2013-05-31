@@ -44,19 +44,19 @@ public class Problem014 implements Solvable {
 	 * @param sequenceStart the sequence start
 	 * @return the Collatz term count
 	 */
-	private static int getCollatzTermCount(int sequenceStart) {
-		BigInteger n = BigInteger.valueOf(sequenceStart);
+	private static int getCollatzTermCount(long sequenceStart) {
+		long n = sequenceStart;
 		int termCount = 1;
 
 		do {
 			// test the first bit to check if n is even
-			if (!n.testBit(0)) {
+			if (n % 2 == 0) {
 				n = evenCollatz(n);
 			} else {
 				n = oddCollatz(n);
 			}
 			termCount++;
-		} while (n.compareTo(BigInteger.ONE) >= 1);
+		} while (n > 1);
 
 		return termCount;
 	}
@@ -67,8 +67,8 @@ public class Problem014 implements Solvable {
 	 * @param n the current Collatz term
 	 * @return the next Collatz term
 	 */
-	private static BigInteger evenCollatz(BigInteger n) {
-		return n.divide(TWO);
+	private static long evenCollatz(long n) {
+		return n / 2;
 	}
 
 	/**
@@ -77,8 +77,8 @@ public class Problem014 implements Solvable {
 	 * @param n the current Collatz term
 	 * @return the next Collatz term
 	 */
-	private static BigInteger oddCollatz(BigInteger n) {
-		return n.multiply(THREE).add(BigInteger.ONE);
+	private static long oddCollatz(long n) {
+		return n * 3 + 1;
 	}
 
 	/**

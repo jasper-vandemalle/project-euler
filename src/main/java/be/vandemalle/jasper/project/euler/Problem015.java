@@ -20,7 +20,7 @@ public class Problem015 implements Solvable {
 	/**
 	 * Get the factorial (n!) of a certain number.
 	 * 
-	 * @param n
+	 * @param n n
 	 * @return the factorial (n!)
 	 * @see <a href="http://en.wikipedia.org/wiki/Factorial">http://en.wikipedia.org/wiki/Factorial</a>
 	 */
@@ -42,11 +42,11 @@ public class Problem015 implements Solvable {
 	}
 
 	/**
-	 * Get the Binomial coefficient for a certain n and k, also known as 'n choose k'.
+	 * Get the binomial coefficient for a certain n and k, also known as 'n choose k'.
 	 * 
-	 * @param n
-	 * @param k
-	 * @return
+	 * @param n n
+	 * @param k k
+	 * @return the binomial coefficient (n choose k)
 	 * @see <a
 	 *      href="http://en.wikipedia.org/wiki/Binomial_coefficient">http://en.wikipedia.org/wiki/Binomial_coefficient</a>
 	 */

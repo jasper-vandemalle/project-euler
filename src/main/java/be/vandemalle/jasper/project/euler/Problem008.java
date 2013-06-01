@@ -1,5 +1,7 @@
 package be.vandemalle.jasper.project.euler;
 
+import be.vandemalle.jasper.project.euler.utils.MathUtils;
+
 /**
  * Solution to Project Euler problem 8.
  * 
@@ -39,26 +41,15 @@ public class Problem008 implements Solvable {
 		for (int i = 0; i < thousandDigitNumber.length() - 4; i++) {
 			// algorithm could be optimized to store subresults and reuse them
 			int product = 1;
-			product *= getIntValueOnIndex(thousandDigitNumber, i);
-			product *= getIntValueOnIndex(thousandDigitNumber, i + 1);
-			product *= getIntValueOnIndex(thousandDigitNumber, i + 2);
-			product *= getIntValueOnIndex(thousandDigitNumber, i + 3);
-			product *= getIntValueOnIndex(thousandDigitNumber, i + 4);
+			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i);
+			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i + 1);
+			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i + 2);
+			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i + 3);
+			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i + 4);
 			max = Math.max(max, product);
 		}
 
 		return Integer.toString(max);
-	}
-
-	/**
-	 * Get the integer value on a certain index of a {@link String}.
-	 * 
-	 * @param string the string
-	 * @param index the index
-	 * @return the integer value
-	 */
-	private static int getIntValueOnIndex(String string, int index) {
-		return Character.digit(string.charAt(index), 10);
 	}
 
 	/**

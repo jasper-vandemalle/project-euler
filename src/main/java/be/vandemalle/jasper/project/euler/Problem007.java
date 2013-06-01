@@ -7,9 +7,11 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=7">http://projecteuler.net/problem=7</a>
- * 
  */
 public class Problem007 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "104743";
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
@@ -24,5 +26,11 @@ public class Problem007 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem007().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

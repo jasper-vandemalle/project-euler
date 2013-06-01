@@ -5,9 +5,11 @@ package be.vandemalle.jasper.project.euler;
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=14">http://projecteuler.net/problem=14</a>
- * 
  */
 public class Problem014 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "837799";
+
 	/** The Constant ONE_MILLLION. */
 	private static final int ONE_MILLLION = 1_000_000;
 
@@ -93,5 +95,11 @@ public class Problem014 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem014().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

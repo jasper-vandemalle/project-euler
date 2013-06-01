@@ -9,9 +9,11 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=3">http://projecteuler.net/problem=3</a>
- * 
  */
 public class Problem003 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "6857";
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
@@ -37,5 +39,11 @@ public class Problem003 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem003().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

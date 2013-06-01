@@ -7,6 +7,9 @@ package be.vandemalle.jasper.project.euler;
  * @see <a href="http://projecteuler.net/problem=18">http://projecteuler.net/problem=18</a>
  */
 public class Problem018 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "1074";
+
 	/** The Constant TRIANGLE. */
 	private static final int[][] TRIANGLE = { { 75 }, { 95, 64 }, { 17, 47, 82 }, { 18, 35, 87, 10 },
 			{ 20, 04, 82, 47, 65 }, { 19, 01, 23, 75, 03, 34 }, { 88, 02, 77, 73, 07, 63, 67 },
@@ -46,5 +49,11 @@ public class Problem018 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem018().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

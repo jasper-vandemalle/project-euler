@@ -5,9 +5,11 @@ package be.vandemalle.jasper.project.euler;
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=4">http://projecteuler.net/problem=4</a>
- * 
  */
 public class Problem004 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "906609";
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
@@ -45,5 +47,11 @@ public class Problem004 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem004().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

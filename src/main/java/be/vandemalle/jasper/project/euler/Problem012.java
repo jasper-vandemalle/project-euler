@@ -7,9 +7,11 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=12">http://projecteuler.net/problem=12</a>
- * 
  */
 public class Problem012 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "76576500";
+
 	/** The Constant FIRST_500_PRIMES. */
 	private static final int[] FIRST_500_PRIMES = PrimeUtils.sieveOfAtkin(3571);
 
@@ -20,7 +22,6 @@ public class Problem012 implements Solvable {
 		for (int i = 1;; i++) {
 			triangNum += i;
 
-			// TODO: count divisors needs optimisation
 			if (countDivisors(triangNum) > 500) {
 				break;
 			}
@@ -68,5 +69,11 @@ public class Problem012 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem012().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

@@ -9,13 +9,16 @@ import java.util.Calendar;
  * @see <a href="http://projecteuler.net/problem=19">http://projecteuler.net/problem=19</a>
  */
 public class Problem019 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "171";
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
 		Calendar shiftDate = Calendar.getInstance();
 		Calendar endDate = Calendar.getInstance();
-		shiftDate.set(1901, Calendar.JANUARY, 1);
-		endDate.set(2000, Calendar.DECEMBER, 31);
+		shiftDate.set(1_901, Calendar.JANUARY, 1);
+		endDate.set(2_000, Calendar.DECEMBER, 31);
 
 		int count = 0;
 
@@ -37,5 +40,11 @@ public class Problem019 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem019().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

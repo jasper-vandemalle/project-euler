@@ -1,14 +1,15 @@
 package be.vandemalle.jasper.project.euler;
 
-
 /**
  * Solution to Project Euler problem 2.
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=2">http://projecteuler.net/problem=2</a>
- * 
  */
 public class Problem002 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "4613732";
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
@@ -16,7 +17,7 @@ public class Problem002 implements Solvable {
 		int previousFibonacciTerm = 1;
 		int currentFibonacciTerm = 2;
 
-		while (currentFibonacciTerm < 4000000) {
+		while (currentFibonacciTerm < 4_000_000) {
 			if (currentFibonacciTerm % 2 == 0) {
 				sumOfEvenFibonacciTerms += currentFibonacciTerm;
 			}
@@ -36,5 +37,11 @@ public class Problem002 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem002().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

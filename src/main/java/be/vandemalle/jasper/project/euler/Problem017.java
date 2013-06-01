@@ -7,6 +7,9 @@ package be.vandemalle.jasper.project.euler;
  * @see <a href="http://projecteuler.net/problem=17">http://projecteuler.net/problem=17</a>
  */
 public class Problem017 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "21124";
+
 	/** The Constant AND. */
 	private static final String AND = "and";
 	/** The Constant HUNDRED. */
@@ -27,7 +30,7 @@ public class Problem017 implements Solvable {
 	@Override
 	public String solve() {
 		int sumOfLetters = 0;
-		for (int i = 1; i <= 1000; i++) {
+		for (int i = 1; i <= 1_000; i++) {
 			sumOfLetters += convertToWrittenEnglish(i).length();
 		}
 		return Integer.toString(sumOfLetters);
@@ -46,8 +49,8 @@ public class Problem017 implements Solvable {
 		} else {
 			StringBuffer sb = new StringBuffer();
 
-			if (i >= 1000) {
-				sb.append(convertToWrittenEnglishZeroToNinetynine(i / 1000));
+			if (i >= 1_000) {
+				sb.append(convertToWrittenEnglishZeroToNinetynine(i / 1_000));
 				sb.append(THOUSAND);
 			}
 			if (i / 100 % 10 != 0) {
@@ -94,5 +97,11 @@ public class Problem017 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem017().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

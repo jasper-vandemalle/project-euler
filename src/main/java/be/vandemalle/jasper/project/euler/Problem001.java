@@ -5,15 +5,17 @@ package be.vandemalle.jasper.project.euler;
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=1">http://projecteuler.net/problem=1</a>
- * 
  */
 public class Problem001 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "233168";
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
 		int sumOfMultiples = 0;
 
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 1_000; i++) {
 			if (i % 3 == 0 || i % 5 == 0) {
 				sumOfMultiples += i;
 			}
@@ -29,5 +31,11 @@ public class Problem001 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem001().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

@@ -13,4 +13,11 @@ public interface Solvable {
 	 * @return the answer to the problem
 	 */
 	String solve();
+
+	/**
+	 * Get the answer to the problem.
+	 * 
+	 * @return the answer
+	 */
+	String getAnswer();
 }

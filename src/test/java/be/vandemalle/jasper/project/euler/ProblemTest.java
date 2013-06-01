@@ -13,101 +13,101 @@ import org.junit.Test;
 public class ProblemTest {
 	@Test
 	public void testProblem001() {
-		assertEquals("233168", new Problem001().solve());
+		assertEquals(new Problem001().getAnswer(), new Problem001().solve());
 	}
 
 	@Test
 	public void testProblem002() {
-		assertEquals("4613732", new Problem002().solve());
+		assertEquals(new Problem002().getAnswer(), new Problem002().solve());
 	}
 
 	@Test
 	public void testProblem003() {
-		assertEquals("6857", new Problem003().solve());
+		assertEquals(new Problem003().getAnswer(), new Problem003().solve());
 	}
 
 	@Test
 	public void testProblem004() {
-		assertEquals("906609", new Problem004().solve());
+		assertEquals(new Problem004().getAnswer(), new Problem004().solve());
 	}
 
 	@Test
 	public void testProblem005() {
-		assertEquals("232792560", new Problem005().solve());
+		assertEquals(new Problem005().getAnswer(), new Problem005().solve());
 	}
 
 	@Test
 	public void testProblem006() {
-		assertEquals("25164150", new Problem006().solve());
+		assertEquals(new Problem006().getAnswer(), new Problem006().solve());
 	}
 
 	@Test
 	public void testProblem007() {
-		assertEquals("104743", new Problem007().solve());
+		assertEquals(new Problem007().getAnswer(), new Problem007().solve());
 	}
 
 	@Test
 	public void testProblem008() {
-		assertEquals("40824", new Problem008().solve());
+		assertEquals(new Problem008().getAnswer(), new Problem008().solve());
 	}
 
 	@Test
 	public void testProblem009() {
-		assertEquals("31875000", new Problem009().solve());
+		assertEquals(new Problem009().getAnswer(), new Problem009().solve());
 	}
 
 	@Test
 	public void testProblem010() {
-		assertEquals("142913828922", new Problem010().solve());
+		assertEquals(new Problem010().getAnswer(), new Problem010().solve());
 	}
 
 	@Test
 	public void testProblem011() {
-		assertEquals("70600674", new Problem011().solve());
+		assertEquals(new Problem011().getAnswer(), new Problem011().solve());
 	}
 
 	@Test
 	public void testProblem012() {
-		assertEquals("76576500", new Problem012().solve());
+		assertEquals(new Problem012().getAnswer(), new Problem012().solve());
 	}
 
 	@Test
 	public void testProblem013() {
-		assertEquals("5537376230", new Problem013().solve());
+		assertEquals(new Problem013().getAnswer(), new Problem013().solve());
 	}
 
 	@Test
 	public void testProblem014() {
-		assertEquals("837799", new Problem014().solve());
+		assertEquals(new Problem014().getAnswer(), new Problem014().solve());
 	}
 
 	@Test
 	public void testProblem015() {
-		assertEquals("137846528820", new Problem015().solve());
+		assertEquals(new Problem015().getAnswer(), new Problem015().solve());
 	}
 
 	@Test
 	public void testProblem016() {
-		assertEquals("1366", new Problem016().solve());
+		assertEquals(new Problem016().getAnswer(), new Problem016().solve());
 	}
 
 	@Test
 	public void testProblem017() {
-		assertEquals("21124", new Problem017().solve());
+		assertEquals(new Problem017().getAnswer(), new Problem017().solve());
 	}
 
 	@Test
 	public void testProblem018() {
-		assertEquals("1074", new Problem018().solve());
+		assertEquals(new Problem018().getAnswer(), new Problem018().solve());
 	}
 
 	@Test
 	public void testProblem019() {
-		assertEquals("171", new Problem019().solve());
+		assertEquals(new Problem019().getAnswer(), new Problem019().solve());
 	}
 
 	@Test
 	public void testProblem020() {
-		assertEquals("648", new Problem020().solve());
+		assertEquals(new Problem020().getAnswer(), new Problem020().solve());
 	}
 }

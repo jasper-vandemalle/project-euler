@@ -13,6 +13,9 @@ import com.google.common.math.BigIntegerMath;
  * @see <a href="http://projecteuler.net/problem=20">http://projecteuler.net/problem=20</a>
  */
 public class Problem020 implements Solvable {
+	/** The Constant ANSWER. */
+	private static final String ANSWER = "648";
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
@@ -28,5 +31,11 @@ public class Problem020 implements Solvable {
 	 */
 	public static void main(String[] args) {
 		System.out.println(new Problem020().solve());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getAnswer() {
+		return ANSWER;
 	}
 }

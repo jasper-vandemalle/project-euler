@@ -95,4 +95,9 @@ public class ProblemTest {
 	public void testProblem017() {
 		assertEquals("21124", new Problem017().solve());
 	}
+
+	@Test
+	public void testProblem018() {
+		assertEquals("1074", new Problem018().solve());
+	}
 }

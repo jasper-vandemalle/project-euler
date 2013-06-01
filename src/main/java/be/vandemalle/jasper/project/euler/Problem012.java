@@ -1,5 +1,7 @@
 package be.vandemalle.jasper.project.euler;
 
+import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
+
 /**
  * Solution to Project Euler problem 12.
  * 
@@ -8,6 +10,9 @@ package be.vandemalle.jasper.project.euler;
  * 
  */
 public class Problem012 implements Solvable {
+	/** The Constant FIRST_500_PRIMES. */
+	private static final int[] FIRST_500_PRIMES = PrimeUtils.sieveOfAtkin(3571);
+
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
@@ -25,23 +30,34 @@ public class Problem012 implements Solvable {
 	}
 
 	/**
-	 * Count the divisor for a certain number.
+	 * Count the divisors for a certain number.
 	 * 
 	 * @param n the number
 	 * @return the amount of divisors
+	 * @see <a href="http://en.wikipedia.org/wiki/Prime_factor">http://en.wikipedia.org/wiki/Prime_factor</a>
 	 */
 	private static int countDivisors(long n) {
-		int count = 0;
-		int end = (int) Math.sqrt(n);
-		for (int i = 1; i < end; i++) {
-			if (n % i == 0) {
-				count += 2;
+		int count = 1;
+		int exponent;
+		long remainder = n;
+
+		for (int prime : FIRST_500_PRIMES) {
+			if (prime * prime > n) {
+				return count * 2;
+			}
+
+			exponent = 1;
+			while (remainder % prime == 0) {
+				exponent++;
+				remainder /= prime;
+			}
+			count *= exponent;
+
+			if (remainder == 1) {
+				return count;
 			}
 		}
-		if (end * end == n) {
-			// Perfect square, add another divisor
-			count++;
-		}
+
 		return count;
 	}
 

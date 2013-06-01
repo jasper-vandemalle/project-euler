@@ -2,7 +2,7 @@ package be.vandemalle.jasper.project.euler;
 
 import java.math.BigInteger;
 
-import be.vandemalle.jasper.project.euler.utils.MathUtils;
+import com.google.common.math.BigIntegerMath;
 
 /**
  * Solution to Project Euler problem 15.
@@ -15,7 +15,7 @@ public class Problem015 implements Solvable {
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
-		BigInteger result = MathUtils.binomialCoefficient(40, 20);
+		BigInteger result = BigIntegerMath.binomial(40, 20);
 		return result.toString();
 	}
 

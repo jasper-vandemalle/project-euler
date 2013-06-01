@@ -1,5 +1,6 @@
 package be.vandemalle.jasper.project.euler;
 
+
 /**
  * Solution to Project Euler problem 2.
  * 

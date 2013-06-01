@@ -5,7 +5,6 @@ package be.vandemalle.jasper.project.euler;
  * 
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=18">http://projecteuler.net/problem=18</a>
- * 
  */
 public class Problem018 implements Solvable {
 	/** The Constant TRIANGLE. */

@@ -1,7 +1,8 @@
-package be.vandemalle.jasper.project.euler;
+package be.vandemalle.jasper.project.euler.problems001to020;
 
 import java.util.List;
 
+import be.vandemalle.jasper.project.euler.AbstractProblemTester;
 import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
 
 /**
@@ -10,7 +11,7 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=3">http://projecteuler.net/problem=3</a>
  */
-public class Problem003 extends ProblemTester {
+public class Problem003 extends AbstractProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "6857";
 

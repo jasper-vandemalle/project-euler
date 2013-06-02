@@ -1,6 +1,8 @@
-package be.vandemalle.jasper.project.euler;
+package be.vandemalle.jasper.project.euler.problems001to020;
 
 import java.util.Calendar;
+
+import be.vandemalle.jasper.project.euler.AbstractProblemTester;
 
 /**
  * Solution to Project Euler problem 19.
@@ -8,7 +10,7 @@ import java.util.Calendar;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=19">http://projecteuler.net/problem=19</a>
  */
-public class Problem019 extends ProblemTester {
+public class Problem019 extends AbstractProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "171";
 

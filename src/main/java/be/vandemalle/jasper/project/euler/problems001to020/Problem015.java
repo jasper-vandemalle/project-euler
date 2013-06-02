@@ -1,6 +1,8 @@
-package be.vandemalle.jasper.project.euler;
+package be.vandemalle.jasper.project.euler.problems001to020;
 
 import java.math.BigInteger;
+
+import be.vandemalle.jasper.project.euler.AbstractProblemTester;
 
 import com.google.common.math.BigIntegerMath;
 
@@ -10,7 +12,7 @@ import com.google.common.math.BigIntegerMath;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=15">http://projecteuler.net/problem=15</a>
  */
-public class Problem015 extends ProblemTester {
+public class Problem015 extends AbstractProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "137846528820";
 

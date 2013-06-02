@@ -1,6 +1,8 @@
-package be.vandemalle.jasper.project.euler;
+package be.vandemalle.jasper.project.euler.problems001to020;
 
 import java.math.BigInteger;
+
+import be.vandemalle.jasper.project.euler.AbstractProblemTester;
 
 /**
  * Solution to Project Euler problem 13.
@@ -8,7 +10,7 @@ import java.math.BigInteger;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=13">http://projecteuler.net/problem=13</a>
  */
-public class Problem013 extends ProblemTester {
+public class Problem013 extends AbstractProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "5537376230";
 

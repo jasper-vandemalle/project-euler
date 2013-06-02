@@ -1,4 +1,6 @@
-package be.vandemalle.jasper.project.euler;
+package be.vandemalle.jasper.project.euler.problems001to020;
+
+import be.vandemalle.jasper.project.euler.AbstractProblemTester;
 
 /**
  * Solution to Project Euler problem 2.
@@ -6,7 +8,7 @@ package be.vandemalle.jasper.project.euler;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=2">http://projecteuler.net/problem=2</a>
  */
-public class Problem002 extends ProblemTester {
+public class Problem002 extends AbstractProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "4613732";
 

@@ -1,4 +1,6 @@
-package be.vandemalle.jasper.project.euler;
+package be.vandemalle.jasper.project.euler.problems001to020;
+
+import be.vandemalle.jasper.project.euler.ProblemTester;
 
 /**
  * Solution to Project Euler problem 2.

@@ -1,5 +1,6 @@
-package be.vandemalle.jasper.project.euler;
+package be.vandemalle.jasper.project.euler.problems001to020;
 
+import be.vandemalle.jasper.project.euler.ProblemTester;
 import be.vandemalle.jasper.project.euler.utils.MathUtils;
 
 /**

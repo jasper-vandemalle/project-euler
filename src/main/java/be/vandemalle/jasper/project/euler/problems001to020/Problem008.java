@@ -1,7 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
 import be.vandemalle.jasper.project.euler.AbstractProblemTester;
-import be.vandemalle.jasper.project.euler.utils.MathUtils;
 
 /**
  * Solution to Project Euler problem 8.
@@ -40,15 +39,16 @@ public class Problem008 extends AbstractProblemTester {
 		thousandDigitNumberSb.append("71636269561882670428252483600823257530420752963450");
 
 		String thousandDigitNumber = thousandDigitNumberSb.toString();
+		char[] thousandDigitNumberCharArr = thousandDigitNumber.toCharArray();
 		int max = 0;
-		for (int i = 0; i < thousandDigitNumber.length() - 4; i++) {
+		for (int i = 0; i < thousandDigitNumberCharArr.length - 4; i++) {
 			// algorithm could be optimized to store subresults and reuse them
 			int product = 1;
-			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i);
-			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i + 1);
-			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i + 2);
-			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i + 3);
-			product *= MathUtils.getIntValueOnIndex(thousandDigitNumber, i + 4);
+			product *= Character.digit(thousandDigitNumberCharArr[i], 10);
+			product *= Character.digit(thousandDigitNumberCharArr[i + 1], 10);
+			product *= Character.digit(thousandDigitNumberCharArr[i + 2], 10);
+			product *= Character.digit(thousandDigitNumberCharArr[i + 3], 10);
+			product *= Character.digit(thousandDigitNumberCharArr[i + 4], 10);
 			max = Math.max(max, product);
 		}
 

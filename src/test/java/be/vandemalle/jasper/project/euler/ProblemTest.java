@@ -11,7 +11,6 @@ import org.reflections.Reflections;
  * Testing all problems against their known solutions.
  * 
  * @author Jasper Vandemalle
- * 
  */
 public class ProblemTest {
 	/**

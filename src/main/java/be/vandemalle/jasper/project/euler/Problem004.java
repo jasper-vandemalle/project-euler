@@ -6,7 +6,7 @@ package be.vandemalle.jasper.project.euler;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=4">http://projecteuler.net/problem=4</a>
  */
-public class Problem004 implements Solvable {
+public class Problem004 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "906609";
 
@@ -38,15 +38,6 @@ public class Problem004 implements Solvable {
 		String s = Integer.toString(i);
 		StringBuilder sb = new StringBuilder(s);
 		return s.equals(sb.reverse().toString());
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem004().solve());
 	}
 
 	/** {@inheritDoc} */

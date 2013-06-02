@@ -8,7 +8,7 @@ import be.vandemalle.jasper.project.euler.utils.MathUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=8">http://projecteuler.net/problem=8</a>
  */
-public class Problem008 implements Solvable {
+public class Problem008 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "40824";
 
@@ -52,15 +52,6 @@ public class Problem008 implements Solvable {
 		}
 
 		return Integer.toString(max);
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem008().solve());
 	}
 
 	/** {@inheritDoc} */

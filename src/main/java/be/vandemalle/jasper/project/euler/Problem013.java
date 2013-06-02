@@ -8,7 +8,7 @@ import java.math.BigInteger;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=13">http://projecteuler.net/problem=13</a>
  */
-public class Problem013 implements Solvable {
+public class Problem013 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "5537376230";
 
@@ -76,15 +76,6 @@ public class Problem013 implements Solvable {
 		}
 
 		return sum.toString().substring(0, 10);
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem013().solve());
 	}
 
 	/** {@inheritDoc} */

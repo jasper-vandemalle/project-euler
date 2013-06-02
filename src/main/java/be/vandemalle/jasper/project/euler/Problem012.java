@@ -8,7 +8,7 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=12">http://projecteuler.net/problem=12</a>
  */
-public class Problem012 implements Solvable {
+public class Problem012 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "76576500";
 
@@ -60,15 +60,6 @@ public class Problem012 implements Solvable {
 		}
 
 		return count;
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem012().solve());
 	}
 
 	/** {@inheritDoc} */

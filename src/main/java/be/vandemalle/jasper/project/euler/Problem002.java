@@ -6,7 +6,7 @@ package be.vandemalle.jasper.project.euler;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=2">http://projecteuler.net/problem=2</a>
  */
-public class Problem002 implements Solvable {
+public class Problem002 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "4613732";
 
@@ -28,15 +28,6 @@ public class Problem002 implements Solvable {
 		}
 
 		return Integer.toString(sumOfEvenFibonacciTerms);
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem002().solve());
 	}
 
 	/** {@inheritDoc} */

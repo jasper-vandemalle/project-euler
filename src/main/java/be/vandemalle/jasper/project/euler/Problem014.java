@@ -6,7 +6,7 @@ package be.vandemalle.jasper.project.euler;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=14">http://projecteuler.net/problem=14</a>
  */
-public class Problem014 implements Solvable {
+public class Problem014 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "837799";
 
@@ -86,15 +86,6 @@ public class Problem014 implements Solvable {
 	 */
 	private static long oddCollatz(long n) {
 		return n * 3 + 1;
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem014().solve());
 	}
 
 	/** {@inheritDoc} */

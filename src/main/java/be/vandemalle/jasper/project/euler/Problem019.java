@@ -8,7 +8,7 @@ import java.util.Calendar;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=19">http://projecteuler.net/problem=19</a>
  */
-public class Problem019 implements Solvable {
+public class Problem019 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "171";
 
@@ -31,15 +31,6 @@ public class Problem019 implements Solvable {
 		}
 
 		return Integer.toString(count);
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem019().solve());
 	}
 
 	/** {@inheritDoc} */

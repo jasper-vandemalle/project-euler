@@ -6,7 +6,7 @@ package be.vandemalle.jasper.project.euler;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=9">http://projecteuler.net/problem=9</a>
  */
-public class Problem009 implements Solvable {
+public class Problem009 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "31875000";
 
@@ -37,15 +37,6 @@ public class Problem009 implements Solvable {
 		}
 
 		return Integer.toString(a * b * c);
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem009().solve());
 	}
 
 	/** {@inheritDoc} */

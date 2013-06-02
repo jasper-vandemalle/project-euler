@@ -6,7 +6,7 @@ package be.vandemalle.jasper.project.euler;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=6">http://projecteuler.net/problem=6</a>
  */
-public class Problem006 implements Solvable {
+public class Problem006 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "25164150";
 
@@ -24,15 +24,6 @@ public class Problem006 implements Solvable {
 		squareOfSum = (int) Math.pow(squareOfSum, 2);
 
 		return Integer.toString(squareOfSum - sumOfSquares);
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem006().solve());
 	}
 
 	/** {@inheritDoc} */

@@ -6,7 +6,7 @@ package be.vandemalle.jasper.project.euler;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=1">http://projecteuler.net/problem=1</a>
  */
-public class Problem001 implements Solvable {
+public class Problem001 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "233168";
 
@@ -22,15 +22,6 @@ public class Problem001 implements Solvable {
 		}
 
 		return Integer.toString(sumOfMultiples);
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem001().solve());
 	}
 
 	/** {@inheritDoc} */

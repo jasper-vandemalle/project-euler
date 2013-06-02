@@ -10,7 +10,7 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=3">http://projecteuler.net/problem=3</a>
  */
-public class Problem003 implements Solvable {
+public class Problem003 extends ProblemTester {
 	/** The Constant ANSWER. */
 	private static final String ANSWER = "6857";
 
@@ -30,15 +30,6 @@ public class Problem003 implements Solvable {
 		}
 
 		return Long.toString(number);
-	}
-
-	/**
-	 * Run and solve the problem.
-	 * 
-	 * @param args arguments
-	 */
-	public static void main(String[] args) {
-		System.out.println(new Problem003().solve());
 	}
 
 	/** {@inheritDoc} */

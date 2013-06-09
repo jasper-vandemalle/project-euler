@@ -1,6 +1,7 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
 import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.utils.MathUtils;
 
 /**
  * Solution to Project Euler problem 18.
@@ -24,24 +25,8 @@ public class Problem018 extends AbstractProblemTester {
 	/** {@inheritDoc} */
 	@Override
 	public String solve() {
-		/**
-		 * Calculating all paths is inefficient, calculating the max path between adjacent cells and reusing the sum off
-		 * their values as a lot faster. Example:
-		 * 
-		 * <pre>
-		 *          03                    03              03        23
-		 *       07    04              07    04        20    19
-		 *    02    04    06        10    13    15
-		 * 08    05    09    03
-		 * </pre>
-		 */
-		for (int i = TRIANGLE.length - 2; i >= 0; i--) {
-			for (int j = 0; j < TRIANGLE[i].length; j++) {
-				TRIANGLE[i][j] += Math.max(TRIANGLE[i + 1][j], TRIANGLE[i + 1][j + 1]);
-			}
-		}
-
-		return Integer.toString(TRIANGLE[0][0]);
+		int pathSum = MathUtils.findMaximumTriangularPathSum(TRIANGLE);
+		return Integer.toString(pathSum);
 	}
 
 	/** {@inheritDoc} */

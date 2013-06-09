@@ -31,7 +31,7 @@ public class Problem028 extends AbstractProblemTester {
 			}
 		}
 
-		return Long.toString(sumOfDiagonals);
+		return Integer.toString(sumOfDiagonals);
 	}
 
 	/** {@inheritDoc} */

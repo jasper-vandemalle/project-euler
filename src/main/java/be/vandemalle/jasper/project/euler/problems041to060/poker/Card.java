@@ -1,4 +1,4 @@
-package be.vandemalle.jasper.project.euler.problems041to060;
+package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
 /**
  * The card, containing a suit and value.
@@ -22,17 +22,6 @@ public class Card {
     public Card(String cardCode) {
         suit = Suit.getByCode(cardCode.charAt(1));
         value = Value.getByCode(cardCode.charAt(0));
-    }
-
-    /**
-     * Create a card.
-     *
-     * @param suit  the suit
-     * @param value the value
-     */
-    private Card(Suit suit, Value value) {
-        this.suit = suit;
-        this.value = value;
     }
 
     /**

@@ -1,6 +1,8 @@
 package be.vandemalle.jasper.project.euler.problems041to060;
 
 import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.Game;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +22,7 @@ public class Problem054 extends AbstractProblemTester {
     /**
      * The Constant ANSWER.
      */
-    private static final String ANSWER = "0";
+    private static final String ANSWER = "42";
 
     /**
      * The Constant FILENAME.
@@ -33,12 +35,20 @@ public class Problem054 extends AbstractProblemTester {
     @Override
     public String solve() {
         List<Game> games = readGames();
+        int player1HandsWon = 0;
 
         for (Game game : games) {
+            game.play();
+
             System.out.println(game);
+            System.out.println();
+
+            if (game.isPlayer1Winner()) {
+                player1HandsWon++;
+            }
         }
 
-        return ".";
+        return Integer.toString(player1HandsWon);
     }
 
     private List<Game> readGames() {
@@ -70,8 +80,7 @@ public class Problem054 extends AbstractProblemTester {
     private Game parseGame(String gameLine) {
         String[] unparsedCards = gameLine.split(" ");
         List<Card> cards = parseCards(unparsedCards);
-        Game game = new Game(cards.subList(0, 5), cards.subList(5, 10));
-        return game;
+        return new Game(cards.subList(0, 5), cards.subList(5, 10));
     }
 
     private List<Card> parseCards(String[] unparsedCards) {

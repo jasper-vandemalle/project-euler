@@ -1,10 +1,9 @@
-package be.vandemalle.jasper.project.euler.problems041to060;
+package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
 /**
  * Contains all values of a card.
  */
 public enum Value {
-    ACE('A'),
     TWO('2'),
     THREE('3'),
     FOUR('4'),
@@ -16,12 +15,13 @@ public enum Value {
     TEN('T'),
     JACK('J'),
     QUEEN('Q'),
-    KING('K');
+    KING('K'),
+    ACE('A');
 
     /**
      * The code character.
      */
-    private char code;
+    private final char code;
 
     /**
      * Instantiate the value.

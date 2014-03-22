@@ -1,4 +1,4 @@
-package be.vandemalle.jasper.project.euler.problems041to060;
+package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
 /**
  * Contains all suits in a card deck.
@@ -12,7 +12,7 @@ public enum Suit {
     /**
      * The code character.
      */
-    private char code;
+    private final char code;
 
     /**
      * Instantiate the suit.

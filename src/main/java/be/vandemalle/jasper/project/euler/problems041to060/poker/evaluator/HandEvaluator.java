@@ -2,13 +2,10 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator;
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Category;
-import be.vandemalle.jasper.project.euler.problems041to060.poker.Value;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.*;
 import com.google.common.collect.ComparisonChain;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * HandEvaluator evaluates a hand and determines the category and high card.
@@ -25,9 +22,9 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
     private Category highestCategory;
 
     /**
-     * The highest value for the category.
+     * The cards of the hand sorted from high to low.
      */
-    private Value highestValue;
+    private List<Card> highestCards;
 
     /**
      * Instantiate the hand evaluator.
@@ -37,6 +34,7 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
     public HandEvaluator(List<Card> hand) {
         initMap();
         findBest(hand);
+        sortHand(hand);
     }
 
     /**
@@ -66,10 +64,19 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
 
             if (evaluator.isMatch(hand)) {
                 highestCategory = category;
-                highestValue = evaluator.getHighestValue(hand);
                 break;
             }
         }
+    }
+
+    /**
+     * Sort the hand.
+     *
+     * @param hand the hand
+     */
+    private void sortHand(List<Card> hand) {
+        Collections.sort(hand, Comparator.<Card>naturalOrder().reversed());
+        highestCards = hand;
     }
 
     /**
@@ -82,22 +89,14 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
     }
 
     /**
-     * Get the highest value.
-     *
-     * @return the highest value
-     */
-    public Value getHighestValue() {
-        return highestValue;
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
     public int compareTo(HandEvaluator that) {
-        return ComparisonChain.start()
-                .compare(this.highestCategory, that.highestCategory)
-                .compare(this.highestValue, that.highestValue)
-                .result();
+        ComparisonChain chain = ComparisonChain.start().compare(this.highestCategory, that.highestCategory);
+        for (int i = 0; i < highestCards.size(); i++) {
+            chain.compare(this.highestCards.get(i), that.highestCards.get(i));
+        }
+        return chain.result();
     }
 }

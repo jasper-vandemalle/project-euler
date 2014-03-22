@@ -73,13 +73,11 @@ public class Game {
         StringBuilder sb = new StringBuilder();
         sb.append("Player 1: ");
         sb.append(toString(player1Hand));
-        sb.append(" (" + player1HandEvaluator.getHighestCategory());
-        sb.append(": " + player1HandEvaluator.getHighestValue() + " high)");
+        sb.append(" (" + player1HandEvaluator.getHighestCategory() + ")");
         sb.append(SystemUtils.LINE_SEPARATOR);
         sb.append("Player 2: ");
         sb.append(toString(player2Hand));
-        sb.append(" (" + player2HandEvaluator.getHighestCategory());
-        sb.append(": " + player2HandEvaluator.getHighestValue() + " high)");
+        sb.append(" (" + player2HandEvaluator.getHighestCategory() + ")");
         sb.append(SystemUtils.LINE_SEPARATOR);
         sb.append(isPlayer1Winner() ? "Player 1 wins!" : "Player 2 wins!");
         return sb.toString();

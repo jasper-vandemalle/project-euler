@@ -32,12 +32,4 @@ public class StraightEvaluator implements CategoryEvaluator {
 
         return straight;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Card getHighestCard(List<Card> hand) {
-        return hand.get(0);
-    }
 }

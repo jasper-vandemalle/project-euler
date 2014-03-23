@@ -23,12 +23,4 @@ public class RoyalFlushEvaluator implements CategoryEvaluator {
         boolean straightFlush = new StraightFlushEvaluator().isMatch(hand);
         return ace && straightFlush;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Card getHighestCard(List<Card> hand) {
-        return hand.get(0);
-    }
 }

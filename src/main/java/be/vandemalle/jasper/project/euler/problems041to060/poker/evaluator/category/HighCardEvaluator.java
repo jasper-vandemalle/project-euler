@@ -18,12 +18,4 @@ public class HighCardEvaluator implements CategoryEvaluator {
     public boolean isMatch(List<Card> hand) {
         return true;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Card getHighestCard(List<Card> hand) {
-        return hand.get(0);
-    }
 }

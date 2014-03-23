@@ -22,5 +22,7 @@ public interface CategoryEvaluator {
      * @param hand the hand (sorted)
      * @return the highest card
      */
-    Card getHighestCard(List<Card> hand);
+    default Card getHighestCard(List<Card> hand) {
+        return hand.get(0);
+    }
 }

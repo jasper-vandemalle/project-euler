@@ -27,12 +27,4 @@ public class FlushEvaluator implements CategoryEvaluator {
         Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == 5);
         return filter.count() > 0;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Card getHighestCard(List<Card> hand) {
-        return hand.get(0);
-    }
 }

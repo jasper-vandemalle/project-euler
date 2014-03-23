@@ -22,7 +22,7 @@ public class Problem054 extends AbstractProblemTester {
     /**
      * The Constant ANSWER.
      */
-    private static final String ANSWER = "42";
+    private static final String ANSWER = "376";
 
     /**
      * The Constant FILENAME.
@@ -40,9 +40,6 @@ public class Problem054 extends AbstractProblemTester {
         for (Game game : games) {
             game.play();
 
-            System.out.println(game);
-            System.out.println();
-
             if (game.isPlayer1Winner()) {
                 player1HandsWon++;
             }
@@ -51,6 +48,11 @@ public class Problem054 extends AbstractProblemTester {
         return Integer.toString(player1HandsWon);
     }
 
+    /**
+     * Read the text file with poker games.
+     *
+     * @return the poker games
+     */
     private List<Game> readGames() {
         File file = new File(FILENAME);
         List<Game> games = new ArrayList<>(1_000);
@@ -83,6 +85,12 @@ public class Problem054 extends AbstractProblemTester {
         return new Game(cards.subList(0, 5), cards.subList(5, 10));
     }
 
+    /**
+     * Parse the cards.
+     *
+     * @param unparsedCards the unparsed cards
+     * @return the parsed cards
+     */
     private List<Card> parseCards(String[] unparsedCards) {
         List<Card> cards = new ArrayList<>(10);
 

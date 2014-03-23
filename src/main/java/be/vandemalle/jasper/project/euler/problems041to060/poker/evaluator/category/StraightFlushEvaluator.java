@@ -16,6 +16,16 @@ public class StraightFlushEvaluator implements CategoryEvaluator {
      */
     @Override
     public boolean isMatch(List<Card> hand) {
-        return false;
+        boolean straight = new StraightEvaluator().isMatch(hand);
+        boolean flush = new FlushEvaluator().isMatch(hand);
+        return straight && flush;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Card getHighestCard(List<Card> hand) {
+        return hand.get(0);
     }
 }

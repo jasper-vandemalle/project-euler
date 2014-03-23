@@ -27,4 +27,18 @@ public class ThreeOfAKindEvaluator implements CategoryEvaluator {
         Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == 3);
         return filter.count() > 0;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Card getHighestCard(List<Card> hand) {
+        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::getValue));
+        List<List<Card>> pairedCards = new ArrayList<>(pairedCardsMap.values());
+
+        Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == 3);
+        return filter.max(
+                (c1, c2) -> c1.get(0).compareTo(c2.get(0))
+        ).get().get(0);
+    }
 }

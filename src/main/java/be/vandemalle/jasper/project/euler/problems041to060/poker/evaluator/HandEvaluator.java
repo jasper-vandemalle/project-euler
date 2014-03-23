@@ -22,6 +22,11 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
     private Category highestCategory;
 
     /**
+     * The highest card in the category.
+     */
+    private Card highestCardInCategory;
+
+    /**
      * The cards of the hand sorted from high to low.
      */
     private List<Card> highestCards;
@@ -33,8 +38,8 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
      */
     public HandEvaluator(List<Card> hand) {
         initMap();
-        findBest(hand);
         sortHand(hand);
+        findBest(hand);
     }
 
     /**
@@ -64,6 +69,7 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
 
             if (evaluator.isMatch(hand)) {
                 highestCategory = category;
+                highestCardInCategory = evaluator.getHighestCard(hand);
                 break;
             }
         }
@@ -89,13 +95,23 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
     }
 
     /**
+     * Get the highest card in the category
+     *
+     * @return the highest card
+     */
+    public Card getHighestCardInCategory() {
+        return highestCardInCategory;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
     public int compareTo(HandEvaluator that) {
         ComparisonChain chain = ComparisonChain.start().compare(this.highestCategory, that.highestCategory);
+        chain = chain.compare(this.highestCardInCategory, that.highestCardInCategory);
         for (int i = 0; i < highestCards.size(); i++) {
-            chain.compare(this.highestCards.get(i), that.highestCards.get(i));
+            chain = chain.compare(this.highestCards.get(i), that.highestCards.get(i));
         }
         return chain.result();
     }

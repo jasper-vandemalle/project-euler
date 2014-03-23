@@ -16,6 +16,28 @@ public class StraightEvaluator implements CategoryEvaluator {
      */
     @Override
     public boolean isMatch(List<Card> hand) {
-        return false;
+        boolean straight = true;
+
+        // hand is sorted from high to low
+        for (int i = 0; i < hand.size() - 1; i++) {
+            Card card = hand.get(i);
+            Card nextCard = hand.get(i + 1);
+
+            // the value ordinal should be exactly one higher
+            if (card.getValue().ordinal() != nextCard.getValue().ordinal() + 1) {
+                straight = false;
+                break;
+            }
+        }
+
+        return straight;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Card getHighestCard(List<Card> hand) {
+        return hand.get(0);
     }
 }

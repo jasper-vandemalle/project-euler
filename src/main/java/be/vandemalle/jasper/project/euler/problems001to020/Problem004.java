@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.TextUtils;
 
 /**
@@ -9,12 +9,7 @@ import be.vandemalle.jasper.project.euler.utils.TextUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=4">http://projecteuler.net/problem=4</a>
  */
-public class Problem004 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "906609";
-
+public class Problem004 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -33,13 +28,5 @@ public class Problem004 extends AbstractProblemTester {
         }
 
         return Integer.toString(maxPalindrome);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

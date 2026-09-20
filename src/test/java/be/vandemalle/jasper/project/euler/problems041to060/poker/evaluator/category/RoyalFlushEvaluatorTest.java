@@ -2,8 +2,8 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.cate
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import com.google.common.collect.Lists;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -17,18 +17,18 @@ public class RoyalFlushEvaluatorTest {
     @Test
     public void testIsMatchRoyalFlush() {
         List<Card> hand = Lists.newArrayList(new Card("AH"), new Card("KH"), new Card("QH"), new Card("JH"), new Card("TH"));
-        Assert.assertTrue(new RoyalFlushEvaluator().isMatch(hand));
+        Assertions.assertTrue(new RoyalFlushEvaluator().isMatch(hand));
     }
 
     @Test
     public void testIsMatchNoRoyalFlush() {
         List<Card> hand = Lists.newArrayList(new Card("AC"), new Card("KH"), new Card("QH"), new Card("JH"), new Card("TH"));
-        Assert.assertFalse(new RoyalFlushEvaluator().isMatch(hand));
+        Assertions.assertFalse(new RoyalFlushEvaluator().isMatch(hand));
     }
 
     @Test
     public void testGetHighestCard() {
         List<Card> hand = Lists.newArrayList(new Card("AH"), new Card("KH"), new Card("QH"), new Card("JH"), new Card("TH"));
-        Assert.assertEquals(new Card("AH"), new RoyalFlushEvaluator().getHighestCard(hand));
+        Assertions.assertEquals(new Card("AH"), new RoyalFlushEvaluator().getHighestCard(hand));
     }
 }

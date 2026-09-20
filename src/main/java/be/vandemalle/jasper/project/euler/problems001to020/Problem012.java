@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
 
 /**
@@ -9,12 +9,7 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=12">http://projecteuler.net/problem=12</a>
  */
-public class Problem012 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "76576500";
-
+public class Problem012 implements Solvable {
     /**
      * The Constant FIRST_500_PRIMES.
      */
@@ -67,13 +62,5 @@ public class Problem012 extends AbstractProblemTester {
         }
 
         return count;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

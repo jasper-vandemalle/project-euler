@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
 
 /**
@@ -9,12 +9,7 @@ import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=7">http://projecteuler.net/problem=7</a>
  */
-public class Problem007 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "104743";
-
+public class Problem007 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -22,13 +17,5 @@ public class Problem007 extends AbstractProblemTester {
     public String solve() {
         int[] primes = PrimeUtils.sieveOfAtkin((int) Math.pow(2, 17));
         return Integer.toString(primes[10_001 - 1]);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

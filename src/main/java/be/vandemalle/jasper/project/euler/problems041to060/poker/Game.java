@@ -1,7 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.HandEvaluator;
-import org.apache.commons.lang3.SystemUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,12 +74,12 @@ public class Game {
         sb.append(toString(player1Hand));
         sb.append(" (" + player1HandEvaluator.getHighestCategory() + ", ");
         sb.append(player1HandEvaluator.getHighestCardInCategory() + ")");
-        sb.append(SystemUtils.LINE_SEPARATOR);
+        sb.append(System.lineSeparator());
         sb.append("Player 2: ");
         sb.append(toString(player2Hand));
         sb.append(" (" + player2HandEvaluator.getHighestCategory() + ", ");
         sb.append(player2HandEvaluator.getHighestCardInCategory() + ")");
-        sb.append(SystemUtils.LINE_SEPARATOR);
+        sb.append(System.lineSeparator());
         sb.append(isPlayer1Winner() ? "Player 1 wins!" : "Player 2 wins!");
         return sb.toString();
     }

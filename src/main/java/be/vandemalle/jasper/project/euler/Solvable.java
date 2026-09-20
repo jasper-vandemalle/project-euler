@@ -1,10 +1,11 @@
 package be.vandemalle.jasper.project.euler;
 
 /**
- * An interface for all solvable Project Euler problems.
+ * A solvable Project Euler problem.
  *
  * @author Jasper Vandemalle
  */
+@FunctionalInterface
 public interface Solvable {
     /**
      * Solve the problem and return the answer.
@@ -12,11 +13,4 @@ public interface Solvable {
      * @return the answer to the problem
      */
     String solve();
-
-    /**
-     * Get the answer to the problem.
-     *
-     * @return the answer
-     */
-    String getAnswer();
 }

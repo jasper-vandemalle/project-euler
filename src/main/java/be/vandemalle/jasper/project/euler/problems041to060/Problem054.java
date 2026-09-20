@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems041to060;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Game;
 
@@ -18,12 +18,7 @@ import java.util.stream.Stream;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=54">http://projecteuler.net/problem=54</a>
  */
-public class Problem054 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "376";
-
+public class Problem054 implements Solvable {
     /**
      * The Constant FILENAME.
      */
@@ -100,13 +95,5 @@ public class Problem054 extends AbstractProblemTester {
         }
 
         return cards;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

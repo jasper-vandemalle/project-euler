@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 import java.util.Calendar;
 
@@ -10,12 +10,7 @@ import java.util.Calendar;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=19">http://projecteuler.net/problem=19</a>
  */
-public class Problem019 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "171";
-
+public class Problem019 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -37,13 +32,5 @@ public class Problem019 extends AbstractProblemTester {
         }
 
         return Integer.toString(count);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

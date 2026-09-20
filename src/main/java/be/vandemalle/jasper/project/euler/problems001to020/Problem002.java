@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
  * Solution to Project Euler problem 2.
@@ -8,12 +8,7 @@ import be.vandemalle.jasper.project.euler.AbstractProblemTester;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=2">http://projecteuler.net/problem=2</a>
  */
-public class Problem002 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "4613732";
-
+public class Problem002 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -34,13 +29,5 @@ public class Problem002 extends AbstractProblemTester {
         }
 
         return Integer.toString(sumOfEvenFibonacciTerms);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

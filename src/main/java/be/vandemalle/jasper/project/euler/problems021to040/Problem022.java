@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems021to040;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import com.google.common.io.Files;
 
 import java.io.File;
@@ -17,12 +17,7 @@ import java.util.regex.Pattern;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=22">http://projecteuler.net/problem=22</a>
  */
-public class Problem022 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "871198282";
-
+public class Problem022 implements Solvable {
     /**
      * The Constant FILENAME.
      */
@@ -95,13 +90,5 @@ public class Problem022 extends AbstractProblemTester {
         } catch (IOException e) {
             return null;
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

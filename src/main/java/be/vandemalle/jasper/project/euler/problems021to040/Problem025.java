@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems021to040;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 import java.math.BigInteger;
 
@@ -10,12 +10,7 @@ import java.math.BigInteger;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=25">http://projecteuler.net/problem=25</a>
  */
-public class Problem025 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "4782";
-
+public class Problem025 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -35,13 +30,5 @@ public class Problem025 extends AbstractProblemTester {
         }
 
         return Long.toString(index);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

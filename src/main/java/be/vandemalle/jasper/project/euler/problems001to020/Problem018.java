@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.MathUtils;
 
 /**
@@ -9,12 +9,7 @@ import be.vandemalle.jasper.project.euler.utils.MathUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=18">http://projecteuler.net/problem=18</a>
  */
-public class Problem018 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "1074";
-
+public class Problem018 implements Solvable {
     /**
      * The Constant TRIANGLE.
      */
@@ -33,13 +28,5 @@ public class Problem018 extends AbstractProblemTester {
     public String solve() {
         int pathSum = MathUtils.findMaximumTriangularPathSum(TRIANGLE);
         return Integer.toString(pathSum);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

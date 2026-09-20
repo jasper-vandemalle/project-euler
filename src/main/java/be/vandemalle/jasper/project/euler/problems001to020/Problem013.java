@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 import java.math.BigInteger;
 
@@ -10,12 +10,7 @@ import java.math.BigInteger;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=13">http://projecteuler.net/problem=13</a>
  */
-public class Problem013 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "5537376230";
-
+public class Problem013 implements Solvable {
     /**
      * The Constant FIFTY_DIGIT_NUMBER.
      */
@@ -84,13 +79,5 @@ public class Problem013 extends AbstractProblemTester {
         }
 
         return sum.toString().substring(0, 10);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

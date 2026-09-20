@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems021to040;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.TextUtils;
 
 /**
@@ -9,12 +9,7 @@ import be.vandemalle.jasper.project.euler.utils.TextUtils;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=36">http://projecteuler.net/problem=36</a>
  */
-public class Problem036 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "872187";
-
+public class Problem036 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -33,13 +28,5 @@ public class Problem036 extends AbstractProblemTester {
             }
         }
         return Integer.toString(sumOfDoubleBasePalindromes);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

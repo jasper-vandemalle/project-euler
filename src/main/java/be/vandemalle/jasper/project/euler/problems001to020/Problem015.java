@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import com.google.common.math.BigIntegerMath;
 
 import java.math.BigInteger;
@@ -11,12 +11,7 @@ import java.math.BigInteger;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=15">http://projecteuler.net/problem=15</a>
  */
-public class Problem015 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "137846528820";
-
+public class Problem015 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -24,13 +19,5 @@ public class Problem015 extends AbstractProblemTester {
     public String solve() {
         BigInteger result = BigIntegerMath.binomial(40, 20);
         return result.toString();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

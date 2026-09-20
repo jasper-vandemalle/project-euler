@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
  * Solution to Project Euler problem 6.
@@ -8,12 +8,7 @@ import be.vandemalle.jasper.project.euler.AbstractProblemTester;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=6">http://projecteuler.net/problem=6</a>
  */
-public class Problem006 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "25164150";
-
+public class Problem006 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -30,13 +25,5 @@ public class Problem006 extends AbstractProblemTester {
         squareOfSum = (int) Math.pow(squareOfSum, 2);
 
         return Integer.toString(squareOfSum - sumOfSquares);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
  * Solution to Project Euler problem 11.
@@ -8,12 +8,7 @@ import be.vandemalle.jasper.project.euler.AbstractProblemTester;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=11">http://projecteuler.net/problem=11</a>
  */
-public class Problem011 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "70600674";
-
+public class Problem011 implements Solvable {
     /**
      * The Constant GRID.
      */
@@ -68,13 +63,5 @@ public class Problem011 extends AbstractProblemTester {
         }
 
         return Integer.toString(maxProduct);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

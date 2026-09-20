@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems021to040;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
  * Solution to Project Euler problem 28.
@@ -8,12 +8,7 @@ import be.vandemalle.jasper.project.euler.AbstractProblemTester;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=28">http://projecteuler.net/problem=28</a>
  */
-public class Problem028 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "669171001";
-
+public class Problem028 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -36,13 +31,5 @@ public class Problem028 extends AbstractProblemTester {
         }
 
         return Integer.toString(sumOfDiagonals);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

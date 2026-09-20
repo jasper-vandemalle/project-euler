@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
  * Solution to Project Euler problem 14.
@@ -8,12 +8,7 @@ import be.vandemalle.jasper.project.euler.AbstractProblemTester;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=14">http://projecteuler.net/problem=14</a>
  */
-public class Problem014 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "837799";
-
+public class Problem014 implements Solvable {
     /**
      * The Constant ONE_MILLION.
      */
@@ -96,13 +91,5 @@ public class Problem014 extends AbstractProblemTester {
      */
     private static long oddCollatz(long n) {
         return n * 3 + 1;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

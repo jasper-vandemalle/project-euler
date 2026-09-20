@@ -2,8 +2,8 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator;
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import com.google.common.collect.Lists;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class HandEvaluatorTest {
 
         // Player 1 wins!
         int comparison = new HandEvaluator(player1Hand).compareTo(new HandEvaluator(player2Hand));
-        Assert.assertTrue(comparison > 0);
+        Assertions.assertTrue(comparison > 0);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class HandEvaluatorTest {
 
         // Player 1 wins!
         int comparison = new HandEvaluator(player1Hand).compareTo(new HandEvaluator(player2Hand));
-        Assert.assertTrue(comparison > 0);
+        Assertions.assertTrue(comparison > 0);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class HandEvaluatorTest {
 
         // Draw
         int comparison = new HandEvaluator(player1Hand).compareTo(new HandEvaluator(player2Hand));
-        Assert.assertTrue(comparison == 0);
+        Assertions.assertTrue(comparison == 0);
     }
 
     @Test
@@ -59,6 +59,6 @@ public class HandEvaluatorTest {
 
         // PLayer 1 wins!
         int comparison = new HandEvaluator(player1Hand).compareTo(new HandEvaluator(player2Hand));
-        Assert.assertTrue(comparison > 0);
+        Assertions.assertTrue(comparison > 0);
     }
 }

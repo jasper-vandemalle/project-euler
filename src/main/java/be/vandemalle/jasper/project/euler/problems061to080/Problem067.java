@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems061to080;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.MathUtils;
 import com.google.common.io.Files;
 import com.google.common.primitives.Ints;
@@ -15,12 +15,7 @@ import java.nio.charset.Charset;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=67">http://projecteuler.net/problem=67</a>
  */
-public class Problem067 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "7273";
-
+public class Problem067 implements Solvable {
     /**
      * The Constant FILENAME.
      */
@@ -72,13 +67,5 @@ public class Problem067 extends AbstractProblemTester {
         } catch (IOException e) {
             return null;
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

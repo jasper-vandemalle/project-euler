@@ -1,6 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems041to060;
 
-import be.vandemalle.jasper.project.euler.AbstractProblemTester;
+import be.vandemalle.jasper.project.euler.Solvable;
 
 import java.math.BigInteger;
 
@@ -10,12 +10,7 @@ import java.math.BigInteger;
  * @author Jasper Vandemalle
  * @see <a href="http://projecteuler.net/problem=48">http://projecteuler.net/problem=48</a>
  */
-public class Problem048 extends AbstractProblemTester {
-    /**
-     * The Constant ANSWER.
-     */
-    private static final String ANSWER = "9110846700";
-
+public class Problem048 implements Solvable {
     /**
      * {@inheritDoc}
      */
@@ -30,13 +25,5 @@ public class Problem048 extends AbstractProblemTester {
 
         String sumOfSelfPowersStringValue = sumOfSelfPowers.toString();
         return sumOfSelfPowersStringValue.substring(sumOfSelfPowersStringValue.length() - 10);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getAnswer() {
-        return ANSWER;
     }
 }

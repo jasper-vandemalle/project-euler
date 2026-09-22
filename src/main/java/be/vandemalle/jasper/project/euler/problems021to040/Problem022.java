@@ -1,11 +1,8 @@
 package be.vandemalle.jasper.project.euler.problems021to040;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-import com.google.common.io.Files;
+import be.vandemalle.jasper.project.euler.utils.Resources;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,16 +16,11 @@ import java.util.regex.Pattern;
  */
 public class Problem022 implements Solvable {
     /**
-     * The Constant FILENAME.
-     */
-    private static final String FILENAME = "src/main/resources/be/vandemalle/jasper/project/euler/problems021to040/Problem022-names.txt";
-
-    /**
      * {@inheritDoc}
      */
     @Override
     public String solve() {
-        String namesString = readFile();
+        String namesString = Resources.readString(Problem022.class, "Problem022-names.txt");
         List<String> names = getNames(namesString);
         long totalScore = 0;
 
@@ -75,20 +67,5 @@ public class Problem022 implements Solvable {
         // natural sorting
         Collections.sort(names);
         return names;
-    }
-
-    /**
-     * Read the file with names.
-     *
-     * @return the names
-     */
-    private static String readFile() {
-        File file = new File(FILENAME);
-
-        try {
-            return Files.toString(file, Charset.defaultCharset());
-        } catch (IOException e) {
-            return null;
-        }
     }
 }

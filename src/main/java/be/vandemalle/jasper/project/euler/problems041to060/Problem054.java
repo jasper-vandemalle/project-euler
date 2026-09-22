@@ -1,16 +1,12 @@
 package be.vandemalle.jasper.project.euler.problems041to060;
 
 import be.vandemalle.jasper.project.euler.Solvable;
+import be.vandemalle.jasper.project.euler.utils.Resources;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Game;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * Solution to Project Euler problem 54.
@@ -19,11 +15,6 @@ import java.util.stream.Stream;
  * @see <a href="http://projecteuler.net/problem=54">http://projecteuler.net/problem=54</a>
  */
 public class Problem054 implements Solvable {
-    /**
-     * The Constant FILENAME.
-     */
-    private static final String FILENAME = "src/main/resources/be/vandemalle/jasper/project/euler/problems041to060/Problem054-poker.txt";
-
     /**
      * {@inheritDoc}
      */
@@ -49,19 +40,9 @@ public class Problem054 implements Solvable {
      * @return the poker games
      */
     private List<Game> readGames() {
-        File file = new File(FILENAME);
-        List<Game> games = new ArrayList<>(1_000);
-
-        try (Stream<String> gameLines = Files.lines(file.toPath(), StandardCharsets.UTF_8)) {
-            for (String gameLine : (Iterable<String>) gameLines::iterator) {
-                Game game = parseGame(gameLine);
-                games.add(game);
-            }
-        } catch (IOException e) {
-            return games;
-        }
-
-        return games;
+        return Resources.readLines(Problem054.class, "Problem054-poker.txt").stream()
+                .map(this::parseGame)
+                .toList();
     }
 
     /**

@@ -1,13 +1,10 @@
 package be.vandemalle.jasper.project.euler.problems061to080;
 
 import be.vandemalle.jasper.project.euler.Solvable;
+import be.vandemalle.jasper.project.euler.utils.Resources;
 import be.vandemalle.jasper.project.euler.utils.MathUtils;
-import com.google.common.io.Files;
 import com.google.common.primitives.Ints;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
 
 /**
  * Solution to Project Euler problem 67.
@@ -16,11 +13,6 @@ import java.nio.charset.Charset;
  * @see <a href="http://projecteuler.net/problem=67">http://projecteuler.net/problem=67</a>
  */
 public class Problem067 implements Solvable {
-    /**
-     * The Constant FILENAME.
-     */
-    private static final String FILENAME = "src/main/resources/be/vandemalle/jasper/project/euler/problems061to080/Problem067-triangle.txt";
-
     /**
      * {@inheritDoc}
      */
@@ -38,7 +30,7 @@ public class Problem067 implements Solvable {
      * @return a parsed triangle array
      */
     private int[][] parseTriangle() {
-        String rawTriangle = readFile();
+        String rawTriangle = Resources.readString(Problem067.class, "Problem067-triangle.txt");
         String[] rawTriangleLines = rawTriangle.split("\\r?\\n");
         int[][] triangle = new int[rawTriangleLines.length][];
 
@@ -52,20 +44,5 @@ public class Problem067 implements Solvable {
         }
 
         return triangle;
-    }
-
-    /**
-     * Read the triangle file.
-     *
-     * @return the file as a string
-     */
-    private static String readFile() {
-        File file = new File(FILENAME);
-
-        try {
-            return Files.toString(file, Charset.defaultCharset());
-        } catch (IOException e) {
-            return null;
-        }
     }
 }

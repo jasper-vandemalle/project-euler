@@ -1,7 +1,5 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
-import com.google.common.collect.Lists;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,6 +55,6 @@ public enum Category {
      * @return the categories
      */
     public static List<Category> getCategoryHighToLow() {
-        return Lists.reverse(Arrays.asList(Category.values()));
+        return Arrays.asList(Category.values()).reversed();
     }
 }

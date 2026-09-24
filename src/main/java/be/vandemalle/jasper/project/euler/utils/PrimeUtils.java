@@ -1,7 +1,5 @@
 package be.vandemalle.jasper.project.euler.utils;
 
-import com.google.common.primitives.Ints;
-
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.List;
@@ -74,6 +72,6 @@ public final class PrimeUtils {
      */
     public static List<Integer> sieveOfAtkinAsList(int upperBoundary) {
         int[] primes = sieveOfAtkin(upperBoundary);
-        return Ints.asList(primes);
+        return Arrays.stream(primes).boxed().toList();
     }
 }

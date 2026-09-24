@@ -1,12 +1,7 @@
 package be.vandemalle.jasper.project.euler.problems021to040;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Iterators;
-import com.google.common.primitives.Longs;
-
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,18 +12,30 @@ import java.util.List;
  */
 public class Problem024 implements Solvable {
     /**
-     * The Constant PERMUTATION_DIGITS.
-     */
-    private static final long[] PERMUTATION_DIGITS = new long[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-    /**
      * {@inheritDoc}
      */
     @Override
     public String solve() {
-        List<Long> permDigitList = Longs.asList(PERMUTATION_DIGITS);
-        Collection<List<Long>> orderedPermutations = Collections2.orderedPermutations(permDigitList);
-        List<Long> MILLIONTH_PERMUTATION = Iterators.get(orderedPermutations.iterator(), 1_000_000 - 1);
-        return Joiner.on("").join(MILLIONTH_PERMUTATION);
+        List<Integer> digits = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        // permutations are zero-indexed, so the millionth one has index 999 999
+        int remaining = 1_000_000 - 1;
+        StringBuilder permutation = new StringBuilder();
+
+        // each leading digit fixes a block of (n - 1)! permutations
+        while (!digits.isEmpty()) {
+            int blockSize = factorial(digits.size() - 1);
+            permutation.append(digits.remove(remaining / blockSize));
+            remaining %= blockSize;
+        }
+
+        return permutation.toString();
+    }
+
+    private static int factorial(int n) {
+        int result = 1;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
     }
 }

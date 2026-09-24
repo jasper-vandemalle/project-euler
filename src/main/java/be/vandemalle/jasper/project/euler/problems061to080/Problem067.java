@@ -3,7 +3,6 @@ package be.vandemalle.jasper.project.euler.problems061to080;
 import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.Resources;
 import be.vandemalle.jasper.project.euler.utils.MathUtils;
-import com.google.common.primitives.Ints;
 
 
 /**
@@ -39,7 +38,7 @@ public class Problem067 implements Solvable {
             triangle[i] = new int[rawTriangleValues.length];
 
             for (int j = 0; j < rawTriangleValues.length; j++) {
-                triangle[i][j] = Ints.tryParse(rawTriangleValues[j]);
+                triangle[i][j] = Integer.parseInt(rawTriangleValues[j]);
             }
         }
 

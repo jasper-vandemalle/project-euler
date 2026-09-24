@@ -1,6 +1,5 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
-import com.google.common.collect.ComparisonChain;
 
 /**
  * The card, containing a suit and value.
@@ -61,9 +60,7 @@ public class Card implements Comparable<Card> {
      */
     @Override
     public int compareTo(Card that) {
-        return ComparisonChain.start()
-                .compare(this.value, that.value)
-                .result();
+        return value.compareTo(that.value);
     }
 
     /**

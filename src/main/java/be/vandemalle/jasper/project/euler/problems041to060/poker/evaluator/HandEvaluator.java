@@ -3,7 +3,6 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Category;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.*;
-import com.google.common.collect.ComparisonChain;
 
 import java.util.*;
 
@@ -39,7 +38,7 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
     public HandEvaluator(List<Card> hand) {
         initMap();
         sortHand(hand);
-        findBest(hand);
+        findBest(highestCards);
     }
 
     /**
@@ -81,8 +80,7 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
      * @param hand the hand
      */
     private void sortHand(List<Card> hand) {
-        Collections.sort(hand, Comparator.<Card>naturalOrder().reversed());
-        highestCards = hand;
+        highestCards = hand.stream().sorted(Comparator.reverseOrder()).toList();
     }
 
     /**
@@ -108,11 +106,13 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
      */
     @Override
     public int compareTo(HandEvaluator that) {
-        ComparisonChain chain = ComparisonChain.start().compare(this.highestCategory, that.highestCategory);
-        chain = chain.compare(this.highestCardInCategory, that.highestCardInCategory);
-        for (int i = 0; i < highestCards.size(); i++) {
-            chain = chain.compare(this.highestCards.get(i), that.highestCards.get(i));
+        int result = this.highestCategory.compareTo(that.highestCategory);
+        if (result == 0) {
+            result = this.highestCardInCategory.compareTo(that.highestCardInCategory);
         }
-        return chain.result();
+        for (int i = 0; result == 0 && i < highestCards.size(); i++) {
+            result = this.highestCards.get(i).compareTo(that.highestCards.get(i));
+        }
+        return result;
     }
 }

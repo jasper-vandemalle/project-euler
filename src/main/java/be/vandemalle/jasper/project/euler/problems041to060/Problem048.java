@@ -1,7 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems041to060;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-
 import java.math.BigInteger;
 
 /**

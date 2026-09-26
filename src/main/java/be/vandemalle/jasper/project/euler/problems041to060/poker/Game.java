@@ -1,7 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.HandEvaluator;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,7 +61,6 @@ public class Game {
 
         return player1Wins;
     }
-
 
     /**
      * {@inheritDoc}

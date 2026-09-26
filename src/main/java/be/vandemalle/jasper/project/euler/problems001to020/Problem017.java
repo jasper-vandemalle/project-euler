@@ -25,13 +25,15 @@ public class Problem017 implements Solvable {
     /**
      * The Constant ZERO_TO_NINE.
      */
-    private static final String[] ZERO_TO_NINE = {"zero", "one", "two", "three", "four", "five", "six", "seven",
-            "eight", "nine"};
+    private static final String[] ZERO_TO_NINE = {
+        "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
+    };
     /**
      * The Constant TEN_TO_NINETEEN.
      */
-    private static final String[] TEN_TO_NINETEEN = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
-            "sixteen", "seventeen", "eighteen", "nineteen"};
+    private static final String[] TEN_TO_NINETEEN = {
+        "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+    };
     /**
      * The Constant TENS.
      */

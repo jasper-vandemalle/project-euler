@@ -3,7 +3,6 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Category;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.*;
-
 import java.util.*;
 
 /**

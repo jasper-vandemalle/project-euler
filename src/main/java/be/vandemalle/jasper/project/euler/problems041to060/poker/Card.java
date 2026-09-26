@@ -1,6 +1,5 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
-
 /**
  * The card, containing a suit and value.
  */

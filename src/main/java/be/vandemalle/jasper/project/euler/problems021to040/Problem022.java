@@ -2,7 +2,6 @@ package be.vandemalle.jasper.project.euler.problems021to040;
 
 import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.Resources;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

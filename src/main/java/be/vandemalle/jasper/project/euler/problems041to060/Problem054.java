@@ -1,10 +1,9 @@
 package be.vandemalle.jasper.project.euler.problems041to060;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-import be.vandemalle.jasper.project.euler.utils.Resources;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Game;
-
+import be.vandemalle.jasper.project.euler.utils.Resources;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -2,7 +2,6 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.cate
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Value;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -41,9 +40,7 @@ public abstract class AbstractGroupedValuesEvaluator implements CategoryEvaluato
         List<List<Card>> pairedCards = new ArrayList<>(pairedCardsMap.values());
 
         Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == getGroupByValue());
-        return filter.max(
-                (c1, c2) -> c1.get(0).compareTo(c2.get(0))
-        ).get().get(0);
+        return filter.max((c1, c2) -> c1.get(0).compareTo(c2.get(0))).get().get(0);
     }
 
     /**

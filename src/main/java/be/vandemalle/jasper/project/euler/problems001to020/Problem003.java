@@ -2,7 +2,6 @@ package be.vandemalle.jasper.project.euler.problems001to020;
 
 import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
-
 import java.util.List;
 
 /**

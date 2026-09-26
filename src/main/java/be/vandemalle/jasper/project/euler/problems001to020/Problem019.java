@@ -1,7 +1,6 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-
 import java.util.Calendar;
 
 /**

@@ -1,9 +1,8 @@
 package be.vandemalle.jasper.project.euler.problems061to080;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-import be.vandemalle.jasper.project.euler.utils.Resources;
 import be.vandemalle.jasper.project.euler.utils.MathUtils;
-
+import be.vandemalle.jasper.project.euler.utils.Resources;
 
 /**
  * Solution to Project Euler problem 67.

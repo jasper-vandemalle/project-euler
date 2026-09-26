@@ -2,7 +2,6 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.cate
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Value;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

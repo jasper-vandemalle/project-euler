@@ -1,10 +1,9 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category;
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 /**
  * Testing the RoyalFlushEvaluator.

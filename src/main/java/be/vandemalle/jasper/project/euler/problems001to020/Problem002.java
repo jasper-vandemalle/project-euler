@@ -3,31 +3,28 @@ package be.vandemalle.jasper.project.euler.problems001to020;
 import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
- * Solution to Project Euler problem 2.
+ * Even Fibonacci numbers.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=2">http://projecteuler.net/problem=2</a>
+ * @see <a href="https://projecteuler.net/problem=2">Project Euler problem 2</a>
  */
 public class Problem002 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
-        int sumOfEvenFibonacciTerms = 0;
-        int previousFibonacciTerm = 1;
-        int currentFibonacciTerm = 2;
+        int sumOfEvenTerms = 0;
+        int previous = 1;
+        int current = 2;
 
-        while (currentFibonacciTerm < 4_000_000) {
-            if (currentFibonacciTerm % 2 == 0) {
-                sumOfEvenFibonacciTerms += currentFibonacciTerm;
+        while (current < 4_000_000) {
+            if (current % 2 == 0) {
+                sumOfEvenTerms += current;
             }
 
-            int temp = currentFibonacciTerm;
-            currentFibonacciTerm += previousFibonacciTerm;
-            previousFibonacciTerm = temp;
+            int next = previous + current;
+            previous = current;
+            current = next;
         }
 
-        return Integer.toString(sumOfEvenFibonacciTerms);
+        return Integer.toString(sumOfEvenTerms);
     }
 }

@@ -1,36 +1,23 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
+import be.vandemalle.jasper.project.euler.utils.MathUtils;
 
 /**
- * Solution to Project Euler problem 5.
+ * Smallest multiple.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=5">http://projecteuler.net/problem=5</a>
+ * @see <a href="https://projecteuler.net/problem=5">Project Euler problem 5</a>
  */
 public class Problem005 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
-        int solution = 1;
-        int[] primes = PrimeUtils.sieveOfAtkin(20);
+        long lcm = 1;
 
-        for (int prime : primes) {
-            int highestPower = 1;
-            int primeDivisorWithHighestPowerUnderTwenty = 0;
-            int primeDivisorWithHighestPower = 0;
-
-            do {
-                primeDivisorWithHighestPowerUnderTwenty = primeDivisorWithHighestPower;
-                primeDivisorWithHighestPower = (int) Math.pow(prime, highestPower++);
-            } while (primeDivisorWithHighestPower < 20);
-
-            solution *= primeDivisorWithHighestPowerUnderTwenty;
+        for (int i = 2; i <= 20; i++) {
+            lcm = lcm / MathUtils.gcd(lcm, i) * i;
         }
 
-        return Integer.toString(solution);
+        return Long.toString(lcm);
     }
 }

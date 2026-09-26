@@ -4,18 +4,19 @@ import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
 
 /**
- * Solution to Project Euler problem 7.
+ * 10 001st prime.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=7">http://projecteuler.net/problem=7</a>
+ * @see <a href="https://projecteuler.net/problem=7">Project Euler problem 7</a>
  */
 public class Problem007 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
+    private static final int N = 10_001;
+
     @Override
     public String solve() {
-        int[] primes = PrimeUtils.sieveOfAtkin((int) Math.pow(2, 17));
-        return Integer.toString(primes[10_001 - 1]);
+        // the nth prime is smaller than n (ln n + ln ln n) for n >= 6
+        int upperBound = (int) (N * (Math.log(N) + Math.log(Math.log(N))));
+        int[] primes = PrimeUtils.sieveOfAtkin(upperBound);
+        return Integer.toString(primes[N - 1]);
     }
 }

@@ -1,33 +1,27 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
-import java.util.List;
 
 /**
- * Solution to Project Euler problem 3.
+ * Largest prime factor.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=3">http://projecteuler.net/problem=3</a>
+ * @see <a href="https://projecteuler.net/problem=3">Project Euler problem 3</a>
  */
 public class Problem003 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
-        Long number = 600_851_475_143L;
-        List<Integer> primes = PrimeUtils.sieveOfAtkinAsList(30_000);
+        long n = 600_851_475_143L;
+        long largestFactor = 1;
 
-        while (!primes.contains(number.intValue())) {
-            for (Integer prime : primes) {
-                if (number % prime == 0) {
-                    number = number / prime;
-                    break;
-                }
+        for (long factor = 2; factor * factor <= n; factor++) {
+            while (n % factor == 0) {
+                largestFactor = factor;
+                n /= factor;
             }
         }
 
-        return Long.toString(number);
+        // whatever is left after dividing out every factor up to its square root is prime
+        return Long.toString(n > 1 ? n : largestFactor);
     }
 }

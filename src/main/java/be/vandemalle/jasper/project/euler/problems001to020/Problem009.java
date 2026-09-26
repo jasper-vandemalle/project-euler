@@ -3,42 +3,24 @@ package be.vandemalle.jasper.project.euler.problems001to020;
 import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
- * Solution to Project Euler problem 9.
+ * Special Pythagorean triplet.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=9">http://projecteuler.net/problem=9</a>
+ * @see <a href="https://projecteuler.net/problem=9">Project Euler problem 9</a>
  */
 public class Problem009 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
+    private static final int SUM = 1_000;
+
     @Override
     public String solve() {
-        boolean foundTriplet = false;
-        int a = 0;
-        int b = 0;
-        int c = 0;
-
-        for (a = 1; a < 1_000; a++) {
-            int aSquare = (int) Math.pow(a, 2);
-
-            for (b = a + 1; b < 1_000; b++) {
-                c = 1_000 - a - b;
-                int bSquare = (int) Math.pow(b, 2);
-                int cSquare = (int) Math.pow(c, 2);
-
-                // b is always > a
-                if (c > b && aSquare + bSquare == cSquare) {
-                    foundTriplet = true;
-                    break;
+        for (int a = 1; a < SUM / 3; a++) {
+            for (int b = a + 1, c = SUM - a - b; b < c; b++, c--) {
+                if (a * a + b * b == c * c) {
+                    return Integer.toString(a * b * c);
                 }
-            }
-
-            if (foundTriplet) {
-                break;
             }
         }
 
-        return Integer.toString(a * b * c);
+        throw new IllegalStateException("No Pythagorean triplet sums to " + SUM);
     }
 }

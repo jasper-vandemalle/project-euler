@@ -3,15 +3,12 @@ package be.vandemalle.jasper.project.euler.problems001to020;
 import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
- * Solution to Project Euler problem 1.
+ * Multiples of 3 or 5.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=1">http://projecteuler.net/problem=1</a>
+ * @see <a href="https://projecteuler.net/problem=1">Project Euler problem 1</a>
  */
 public class Problem001 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
         int sumOfMultiples = 0;

@@ -4,24 +4,22 @@ import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.TextUtils;
 
 /**
- * Solution to Project Euler problem 4.
+ * Largest palindrome product.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=4">http://projecteuler.net/problem=4</a>
+ * @see <a href="https://projecteuler.net/problem=4">Project Euler problem 4</a>
  */
 public class Problem004 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
         int maxPalindrome = 0;
 
         for (int i = 100; i <= 999; i++) {
-            for (int j = 100; j <= 999; j++) {
+            // multiplication is commutative, so j only needs to start at i
+            for (int j = i; j <= 999; j++) {
                 int product = i * j;
 
-                if (TextUtils.isPalindrome(product) && maxPalindrome < product) {
+                if (product > maxPalindrome && TextUtils.isPalindrome(product)) {
                     maxPalindrome = product;
                 }
             }

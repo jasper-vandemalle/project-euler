@@ -7,6 +7,17 @@ package be.vandemalle.jasper.project.euler.utils;
  */
 public class MathUtils {
     /**
+     * Greatest common divisor, using Euclid's algorithm.
+     *
+     * @param a the first number
+     * @param b the second number
+     * @return the greatest common divisor of a and b
+     */
+    public static long gcd(long a, long b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    /**
      * Count the sum of digits of a number.
      *
      * @param number the number

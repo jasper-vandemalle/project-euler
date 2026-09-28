@@ -4,30 +4,27 @@ import be.vandemalle.jasper.project.euler.Solvable;
 import java.math.BigInteger;
 
 /**
- * Solution to Project Euler problem 25.
+ * 1000-digit Fibonacci number.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=25">http://projecteuler.net/problem=25</a>
+ * @see <a href="https://projecteuler.net/problem=25">Project Euler problem 25</a>
  */
 public class Problem025 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
+        // the smallest number with 1000 digits
+        BigInteger threshold = BigInteger.TEN.pow(1_000 - 1);
         BigInteger previous = BigInteger.ZERO;
         BigInteger current = BigInteger.ONE;
-        // start from 1 since current: Fib(1) = 1
         int index = 1;
 
-        while (current.toString().length() < 1_000) {
-            BigInteger temp = current;
-            current = previous.add(current);
-            previous = temp;
-
+        while (current.compareTo(threshold) < 0) {
+            BigInteger next = previous.add(current);
+            previous = current;
+            current = next;
             index++;
         }
 
-        return Long.toString(index);
+        return Integer.toString(index);
     }
 }

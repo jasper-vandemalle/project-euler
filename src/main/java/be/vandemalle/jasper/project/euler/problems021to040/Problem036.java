@@ -4,15 +4,12 @@ import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.TextUtils;
 
 /**
- * Solution to Project Euler problem 36.
+ * Double-base palindromes.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=36">http://projecteuler.net/problem=36</a>
+ * @see <a href="https://projecteuler.net/problem=36">Project Euler problem 36</a>
  */
 public class Problem036 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
         int sumOfDoubleBasePalindromes = 0;

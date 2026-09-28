@@ -5,15 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Solution to Project Euler problem 24.
+ * Lexicographic permutations.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=24">http://projecteuler.net/problem=24</a>
+ * @see <a href="https://projecteuler.net/problem=24">Project Euler problem 24</a>
  */
 public class Problem024 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
         List<Integer> digits = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));

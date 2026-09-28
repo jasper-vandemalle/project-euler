@@ -4,25 +4,23 @@ import be.vandemalle.jasper.project.euler.Solvable;
 import java.math.BigInteger;
 
 /**
- * Solution to Project Euler problem 48.
+ * Self powers.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=48">http://projecteuler.net/problem=48</a>
+ * @see <a href="https://projecteuler.net/problem=48">Project Euler problem 48</a>
  */
 public class Problem048 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
+        // only the last ten digits matter, so everything can be done modulo 10^10
+        BigInteger modulus = BigInteger.TEN.pow(10);
         BigInteger sumOfSelfPowers = BigInteger.ZERO;
 
         for (int i = 1; i <= 1_000; i++) {
-            BigInteger selfPower = BigInteger.valueOf(i).pow(i);
-            sumOfSelfPowers = sumOfSelfPowers.add(selfPower);
+            BigInteger n = BigInteger.valueOf(i);
+            sumOfSelfPowers = sumOfSelfPowers.add(n.modPow(n, modulus));
         }
 
-        String sumOfSelfPowersStringValue = sumOfSelfPowers.toString();
-        return sumOfSelfPowersStringValue.substring(sumOfSelfPowersStringValue.length() - 10);
+        return String.format("%010d", sumOfSelfPowers.mod(modulus));
     }
 }

@@ -3,15 +3,12 @@ package be.vandemalle.jasper.project.euler.problems001to020;
 import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
- * Solution to Project Euler problem 15.
+ * Lattice paths.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=15">http://projecteuler.net/problem=15</a>
+ * @see <a href="https://projecteuler.net/problem=15">Project Euler problem 15</a>
  */
 public class Problem015 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
         // a path through a 20x20 grid is 40 moves, of which 20 go right: C(40, 20)

@@ -6,15 +6,12 @@ import java.math.BigInteger;
 import java.util.stream.IntStream;
 
 /**
- * Solution to Project Euler problem 20.
+ * Factorial digit sum.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=20">http://projecteuler.net/problem=20</a>
+ * @see <a href="https://projecteuler.net/problem=20">Project Euler problem 20</a>
  */
 public class Problem020 implements Solvable {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
         BigInteger factorialOfHundred = IntStream.rangeClosed(2, 100)

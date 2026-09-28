@@ -3,93 +3,41 @@ package be.vandemalle.jasper.project.euler.problems001to020;
 import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
- * Solution to Project Euler problem 14.
+ * Longest Collatz sequence.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=14">http://projecteuler.net/problem=14</a>
+ * @see <a href="https://projecteuler.net/problem=14">Project Euler problem 14</a>
  */
 public class Problem014 implements Solvable {
-    /**
-     * The Constant ONE_MILLION.
-     */
-    private static final int ONE_MILLION = 1_000_000;
+    private static final int LIMIT = 1_000_000;
 
-    /**
-     * The Constant TERM_COUNT_CACHE.
-     */
-    private static final int[] TERM_COUNT_CACHE = new int[ONE_MILLION / 2];
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
-        int maxTermCount = 0;
-        int numberWithMaxTerms = 0;
+        // chain lengths for starting numbers below the limit, filled in as they are computed
+        int[] cache = new int[LIMIT];
+        cache[1] = 1;
+        int longestStart = 1;
 
-        for (int i = 1; i < ONE_MILLION; i++) {
-            int termCount = getCollatzTermCount(i);
-
-            if (termCount > maxTermCount) {
-                maxTermCount = termCount;
-                numberWithMaxTerms = i;
+        for (int start = 2; start < LIMIT; start++) {
+            if (chainLength(start, cache) > cache[longestStart]) {
+                longestStart = start;
             }
         }
 
-        return Integer.toString(numberWithMaxTerms);
+        return Integer.toString(longestStart);
     }
 
-    /**
-     * Gets the Collatz term count.
-     *
-     * @param sequenceStart the sequence start
-     * @return the Collatz term count
-     */
-    private static int getCollatzTermCount(long sequenceStart) {
-        int termCount = 0;
-
-        // check cached values
-        if (sequenceStart < TERM_COUNT_CACHE.length) {
-            termCount = TERM_COUNT_CACHE[(int) sequenceStart - 1];
+    private static int chainLength(long n, int[] cache) {
+        if (n < cache.length && cache[(int) n] != 0) {
+            return cache[(int) n];
         }
 
-        if (termCount != 0) {
-            return termCount;
+        // terms can climb well above the limit, hence the long
+        int length = 1 + chainLength(n % 2 == 0 ? n / 2 : 3 * n + 1, cache);
+
+        if (n < cache.length) {
+            cache[(int) n] = length;
         }
-
-        if (sequenceStart == 1) {
-            termCount = 1;
-        } else if (sequenceStart % 2 == 0) {
-            termCount = getCollatzTermCount(evenCollatz(sequenceStart)) + 1;
-        } else {
-            termCount = getCollatzTermCount(oddCollatz(sequenceStart)) + 1;
-        }
-
-        // put the result in the cache
-        if (sequenceStart < TERM_COUNT_CACHE.length) {
-            TERM_COUNT_CACHE[(int) sequenceStart - 1] = termCount;
-        }
-
-        return termCount;
-    }
-
-    /**
-     * The even Collatz function.
-     *
-     * @param n the current Collatz term
-     * @return the next Collatz term
-     */
-    private static long evenCollatz(long n) {
-        return n / 2;
-    }
-
-    /**
-     * The odd Collatz function.
-     *
-     * @param n the current Collatz term
-     * @return the next Collatz term
-     */
-    private static long oddCollatz(long n) {
-        return n * 3 + 1;
+        return length;
     }
 }

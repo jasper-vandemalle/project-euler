@@ -3,15 +3,12 @@ package be.vandemalle.jasper.project.euler.problems001to020;
 import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
- * Solution to Project Euler problem 11.
+ * Largest product in a grid.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=11">http://projecteuler.net/problem=11</a>
+ * @see <a href="https://projecteuler.net/problem=11">Project Euler problem 11</a>
  */
 public class Problem011 implements Solvable {
-    /**
-     * The Constant GRID.
-     */
     private static final int[][] GRID = new int[][] {
         {8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
         {49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0},
@@ -35,34 +32,40 @@ public class Problem011 implements Solvable {
         {1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48}
     };
 
-    /**
-     * {@inheritDoc}
-     */
+    private static final int LENGTH = 4;
+
     @Override
     public String solve() {
         int maxProduct = 0;
 
-        for (int i = 0; i < GRID.length - 3; i++) {
-            for (int j = 0; j < GRID[i].length - 3; j++) {
-                int productHorizontal = 1;
-                int productVertical = 1;
-                int productMainDiagonal = 1;
-                int productAntiDiagonal = 1;
-
-                for (int k = 0; k < 4; k++) {
-                    productHorizontal *= GRID[i][j + k];
-                    productVertical *= GRID[i + k][j];
-                    productMainDiagonal *= GRID[i + k][j + k];
-                    productAntiDiagonal *= GRID[j + 3 - k][i + k];
-                }
-
-                maxProduct = Math.max(maxProduct, productHorizontal);
-                maxProduct = Math.max(maxProduct, productVertical);
-                maxProduct = Math.max(maxProduct, productMainDiagonal);
-                maxProduct = Math.max(maxProduct, productAntiDiagonal);
+        for (int row = 0; row < GRID.length; row++) {
+            for (int col = 0; col < GRID[row].length; col++) {
+                maxProduct = Math.max(maxProduct, product(row, col, 0, 1)); // right
+                maxProduct = Math.max(maxProduct, product(row, col, 1, 0)); // down
+                maxProduct = Math.max(maxProduct, product(row, col, 1, 1)); // diagonally down-right
+                maxProduct = Math.max(maxProduct, product(row, col, 1, -1)); // diagonally down-left
             }
         }
 
         return Integer.toString(maxProduct);
+    }
+
+    /**
+     * Multiply {@link #LENGTH} adjacent numbers, starting at a cell and moving in a fixed direction.
+     *
+     * @return the product, or 0 when the line runs off the grid
+     */
+    private static int product(int row, int col, int rowStep, int colStep) {
+        int lastRow = row + (LENGTH - 1) * rowStep;
+        int lastCol = col + (LENGTH - 1) * colStep;
+        if (lastRow >= GRID.length || lastCol < 0 || lastCol >= GRID[row].length) {
+            return 0;
+        }
+
+        int product = 1;
+        for (int k = 0; k < LENGTH; k++) {
+            product *= GRID[row + k * rowStep][col + k * colStep];
+        }
+        return product;
     }
 }

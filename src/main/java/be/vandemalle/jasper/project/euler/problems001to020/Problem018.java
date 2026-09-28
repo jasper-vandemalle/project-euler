@@ -4,15 +4,12 @@ import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.utils.MathUtils;
 
 /**
- * Solution to Project Euler problem 18.
+ * Maximum path sum I.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=18">http://projecteuler.net/problem=18</a>
+ * @see <a href="https://projecteuler.net/problem=18">Project Euler problem 18</a>
  */
 public class Problem018 implements Solvable {
-    /**
-     * The Constant TRIANGLE.
-     */
     private static final int[][] TRIANGLE = {
         {75},
         {95, 64},
@@ -31,9 +28,6 @@ public class Problem018 implements Solvable {
         {4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23}
     };
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
         int pathSum = MathUtils.findMaximumTriangularPathSum(TRIANGLE);

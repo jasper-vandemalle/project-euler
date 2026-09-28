@@ -1,66 +1,36 @@
 package be.vandemalle.jasper.project.euler.problems001to020;
 
 import be.vandemalle.jasper.project.euler.Solvable;
-import be.vandemalle.jasper.project.euler.utils.PrimeUtils;
 
 /**
- * Solution to Project Euler problem 12.
+ * Highly divisible triangular number.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=12">http://projecteuler.net/problem=12</a>
+ * @see <a href="https://projecteuler.net/problem=12">Project Euler problem 12</a>
  */
 public class Problem012 implements Solvable {
-    /**
-     * The Constant FIRST_500_PRIMES.
-     */
-    private static final int[] FIRST_500_PRIMES = PrimeUtils.sieveOfAtkin(3571);
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
-        long triangleNum = 0;
-        for (int i = 1; ; i++) {
-            triangleNum += i;
+        for (int n = 1; ; n++) {
+            // T(n) = n (n + 1) / 2, and n and n + 1 are coprime, so the divisor count splits into two
+            // independent factors once the 2 is divided out of whichever one is even
+            int divisors = n % 2 == 0
+                    ? countDivisors(n / 2) * countDivisors(n + 1)
+                    : countDivisors(n) * countDivisors((n + 1) / 2);
 
-            if (countDivisors(triangleNum) > 500) {
-                break;
+            if (divisors > 500) {
+                return Long.toString((long) n * (n + 1) / 2);
             }
         }
-
-        return Long.toString(triangleNum);
     }
 
-    /**
-     * Count the divisors for a certain number.
-     *
-     * @param n the number
-     * @return the amount of divisors
-     * @see <a href="http://en.wikipedia.org/wiki/Prime_factor">http://en.wikipedia.org/wiki/Prime_factor</a>
-     */
-    private static int countDivisors(long n) {
-        int count = 1;
-        int exponent;
-        long remainder = n;
-
-        for (int prime : FIRST_500_PRIMES) {
-            if (prime * prime > n) {
-                return count * 2;
-            }
-
-            exponent = 1;
-            while (remainder % prime == 0) {
-                exponent++;
-                remainder /= prime;
-            }
-            count *= exponent;
-
-            if (remainder == 1) {
-                return count;
+    private static int countDivisors(int n) {
+        int count = 0;
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                count += i * i == n ? 1 : 2;
             }
         }
-
         return count;
     }
 }

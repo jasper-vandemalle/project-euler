@@ -3,45 +3,24 @@ package be.vandemalle.jasper.project.euler.problems001to020;
 import be.vandemalle.jasper.project.euler.Solvable;
 
 /**
- * Solution to Project Euler problem 17.
+ * Number letter counts.
  *
  * @author Jasper Vandemalle
- * @see <a href="http://projecteuler.net/problem=17">http://projecteuler.net/problem=17</a>
+ * @see <a href="https://projecteuler.net/problem=17">Project Euler problem 17</a>
  */
 public class Problem017 implements Solvable {
-    /**
-     * The Constant AND.
-     */
     private static final String AND = "and";
-    /**
-     * The Constant HUNDRED.
-     */
     private static final String HUNDRED = "hundred";
-    /**
-     * The Constant THOUSAND.
-     */
     private static final String THOUSAND = "thousand";
 
-    /**
-     * The Constant ZERO_TO_NINE.
-     */
     private static final String[] ZERO_TO_NINE = {
         "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
     };
-    /**
-     * The Constant TEN_TO_NINETEEN.
-     */
     private static final String[] TEN_TO_NINETEEN = {
         "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
     };
-    /**
-     * The Constant TENS.
-     */
     private static final String[] TENS = {"twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String solve() {
         int sumOfLetters = 0;
@@ -56,9 +35,9 @@ public class Problem017 implements Solvable {
      *
      * @param i the number to convert
      * @return the English conversion of the number
-     * @see <a href="http://en.wikipedia.org/wiki/English_numerals">http://en.wikipedia.org/wiki/English_numerals</a>
+     * @see <a href="https://en.wikipedia.org/wiki/English_numerals">English numerals</a>
      */
-    private String convertToWrittenEnglish(int i) {
+    private static String convertToWrittenEnglish(int i) {
         if (i < 100) {
             return convertToWrittenEnglishZeroToNinetynine(i);
         } else {
@@ -83,11 +62,11 @@ public class Problem017 implements Solvable {
     }
 
     /**
-     * Convert a number (within [0 9]) to written English.
+     * Convert a number (within [0, 99]) to written English.
      *
-     * @param n the n
+     * @param n the number to convert
      * @return the English conversion of the number
-     * @see <a href="http://en.wikipedia.org/wiki/English_numerals">http://en.wikipedia.org/wiki/English_numerals</a>
+     * @see <a href="https://en.wikipedia.org/wiki/English_numerals">English numerals</a>
      */
     private static String convertToWrittenEnglishZeroToNinetynine(int n) {
         if (n < 10) {

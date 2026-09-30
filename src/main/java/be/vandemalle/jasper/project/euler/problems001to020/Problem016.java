@@ -13,8 +13,7 @@ import java.math.BigInteger;
 public class Problem016 implements Solvable {
     @Override
     public String solve() {
-        // max long = (2^63)-1
-        String numStr = BigInteger.valueOf(2).pow(1_000).toString();
-        return Integer.toString(MathUtils.countSumOfDigits(numStr));
+        // 2^1000 is far beyond the range of a long
+        return Integer.toString(MathUtils.digitSum(BigInteger.TWO.pow(1_000)));
     }
 }

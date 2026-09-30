@@ -17,7 +17,6 @@ public class Problem020 implements Solvable {
         BigInteger factorialOfHundred = IntStream.rangeClosed(2, 100)
                 .mapToObj(BigInteger::valueOf)
                 .reduce(BigInteger.ONE, BigInteger::multiply);
-        int sumOfDigits = MathUtils.countSumOfDigits(factorialOfHundred.toString());
-        return Integer.toString(sumOfDigits);
+        return Integer.toString(MathUtils.digitSum(factorialOfHundred));
     }
 }

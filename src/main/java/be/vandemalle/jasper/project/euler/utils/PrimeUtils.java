@@ -2,7 +2,6 @@ package be.vandemalle.jasper.project.euler.utils;
 
 import java.util.Arrays;
 import java.util.BitSet;
-import java.util.List;
 
 /**
  * Utility class for code related to primes.
@@ -10,12 +9,14 @@ import java.util.List;
  * @author Jasper Vandemalle
  */
 public final class PrimeUtils {
+    private PrimeUtils() {}
+
     /**
      * Generate primes using the Sieve of Atkin.
      *
      * @param upperBoundary the upper boundary of the sieve
      * @return an array with the sieved primes
-     * @see <a href="http://en.wikipedia.org/wiki/Sieve_of_Atkin">http://en.wikipedia.org/wiki/Sieve_of_Atkin</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Sieve_of_Atkin">Sieve of Atkin</a>
      */
     public static int[] sieveOfAtkin(int upperBoundary) {
         BitSet isPrime = new BitSet(upperBoundary + 1);
@@ -61,17 +62,5 @@ public final class PrimeUtils {
             }
         }
         return Arrays.copyOf(primes, found);
-    }
-
-    /**
-     * Generate primes using the Sieve of Atkin.
-     *
-     * @param upperBoundary the upper boundary of the sieve
-     * @return a list with the sieved primes
-     * @see <a href="http://en.wikipedia.org/wiki/Sieve_of_Atkin">http://en.wikipedia.org/wiki/Sieve_of_Atkin</a>
-     */
-    public static List<Integer> sieveOfAtkinAsList(int upperBoundary) {
-        int[] primes = sieveOfAtkin(upperBoundary);
-        return Arrays.stream(primes).boxed().toList();
     }
 }

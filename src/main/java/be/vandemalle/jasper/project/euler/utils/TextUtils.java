@@ -5,12 +5,14 @@ package be.vandemalle.jasper.project.euler.utils;
  *
  * @author Jasper Vandemalle
  */
-public class TextUtils {
+public final class TextUtils {
+    private TextUtils() {}
+
     /**
      * Test if a certain number is a palindrome.
      *
      * @param i the number to test
-     * @return <code>true</code> if the number is a palindrome, <code>false</code> otherwise
+     * @return {@code true} if the number is a palindrome, {@code false} otherwise
      */
     public static boolean isPalindrome(int i) {
         String s = Integer.toString(i);
@@ -21,7 +23,7 @@ public class TextUtils {
      * Test if a certain string is a palindrome.
      *
      * @param s the string to test
-     * @return <code>true</code> if the string is a palindrome, <code>false</code> otherwise
+     * @return {@code true} if the string is a palindrome, {@code false} otherwise
      */
     public static boolean isPalindrome(String s) {
         StringBuilder sb = new StringBuilder(s);

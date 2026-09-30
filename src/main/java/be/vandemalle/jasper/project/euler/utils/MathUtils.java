@@ -1,11 +1,15 @@
 package be.vandemalle.jasper.project.euler.utils;
 
+import java.math.BigInteger;
+
 /**
  * Utility class for math related functions.
  *
  * @author Jasper Vandemalle
  */
-public class MathUtils {
+public final class MathUtils {
+    private MathUtils() {}
+
     /**
      * Greatest common divisor, using Euclid's algorithm.
      *
@@ -18,26 +22,21 @@ public class MathUtils {
     }
 
     /**
-     * Count the sum of digits of a number.
+     * Sum the decimal digits of a non-negative number.
      *
      * @param number the number
-     * @return the sum of digits
+     * @return the sum of its digits
      */
-    public static int countSumOfDigits(String number) {
-        int sumOfDigits = 0;
-
-        for (char c : number.toCharArray()) {
-            sumOfDigits += Character.digit(c, 10);
-        }
-        return sumOfDigits;
+    public static int digitSum(BigInteger number) {
+        return number.toString().chars().map(c -> c - '0').sum();
     }
 
     /**
-     * Find the sum off all values in the maximum path of a triangle:
-     * <p/>
-     * Calculating all paths is inefficient, calculating the max path between adjacent cells and reusing the sum off
-     * their values as a lot faster. Example:
-     * <p/>
+     * Find the sum of all values on the maximum path from the top of a triangle to its bottom row.
+     *
+     * <p>Rather than trying every path, work upwards from the second to last row and add the larger of the two
+     * values below to each cell. The top then holds the answer:
+     *
      * <pre>
      *          03                    03              03        23
      *       07    04              07    04        20    19
@@ -45,16 +44,18 @@ public class MathUtils {
      * 08    05    09    03
      * </pre>
      *
-     * @param triangle the triangle
+     * @param triangle the triangle, which is left unchanged
      * @return the sum of all values in the maximum path
      */
     public static int findMaximumTriangularPathSum(int[][] triangle) {
-        for (int i = triangle.length - 2; i >= 0; i--) {
-            for (int j = 0; j < triangle[i].length; j++) {
-                triangle[i][j] += Math.max(triangle[i + 1][j], triangle[i + 1][j + 1]);
+        int[] sums = triangle[triangle.length - 1].clone();
+
+        for (int row = triangle.length - 2; row >= 0; row--) {
+            for (int col = 0; col < triangle[row].length; col++) {
+                sums[col] = triangle[row][col] + Math.max(sums[col], sums[col + 1]);
             }
         }
 
-        return triangle[0][0];
+        return sums[0];
     }
 }

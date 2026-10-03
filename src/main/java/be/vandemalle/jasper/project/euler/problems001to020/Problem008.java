@@ -9,7 +9,7 @@ import be.vandemalle.jasper.project.euler.Solvable;
  * @see <a href="https://projecteuler.net/problem=8">Project Euler problem 8</a>
  */
 public class Problem008 implements Solvable {
-    private static final int ADJACENT = 5;
+    private static final int ADJACENT = 13;
 
     private static final String DIGITS = """
             73167176531330624919225119674426574742355349194934

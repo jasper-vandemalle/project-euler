@@ -53,7 +53,7 @@ class ProblemTest {
                 problem(5, new Problem005(), "232792560"),
                 problem(6, new Problem006(), "25164150"),
                 problem(7, new Problem007(), "104743"),
-                problem(8, new Problem008(), "40824"),
+                problem(8, new Problem008(), "23514624000"),
                 problem(9, new Problem009(), "31875000"),
                 problem(10, new Problem010(), "142913828922"),
                 problem(11, new Problem011(), "70600674"),

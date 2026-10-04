@@ -50,10 +50,10 @@ public final class PrimeUtils {
         }
         int[] primes = new int[upperBoundary];
         int found = 0;
-        if (upperBoundary > 2) {
+        if (upperBoundary >= 2) {
             primes[found++] = 2;
         }
-        if (upperBoundary > 3) {
+        if (upperBoundary >= 3) {
             primes[found++] = 3;
         }
         for (int n = 5; n <= upperBoundary; n += 2) {

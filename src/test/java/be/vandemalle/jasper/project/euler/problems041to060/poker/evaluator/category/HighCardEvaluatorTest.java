@@ -17,12 +17,4 @@ public class HighCardEvaluatorTest {
         List<Card> hand = Card.parseAll("AH 7H 7C 6D 6S");
         Assertions.assertTrue(new HighCardEvaluator().isMatch(hand));
     }
-
-    @Test
-    public void testGetHighestCard() {
-        List<Card> hand = Card.parseAll("AH 7H 7C 6D 6S");
-        Assertions.assertEquals(
-                Card.parse("AH").value(),
-                new HighCardEvaluator().getHighestCard(hand).value());
-    }
 }

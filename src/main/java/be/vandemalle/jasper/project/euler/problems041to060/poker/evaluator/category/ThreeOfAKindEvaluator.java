@@ -7,9 +7,6 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.cate
  * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#THREE_OF_A_KIND
  */
 public class ThreeOfAKindEvaluator extends AbstractGroupedValuesEvaluator {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int getGroupByValue() {
         return 3;

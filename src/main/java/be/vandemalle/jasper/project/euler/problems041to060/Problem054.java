@@ -15,18 +15,8 @@ import java.util.List;
 public class Problem054 implements Solvable {
     @Override
     public String solve() {
-        List<Game> games = readGames();
-        int player1HandsWon = 0;
-
-        for (Game game : games) {
-            game.play();
-
-            if (game.isPlayer1Winner()) {
-                player1HandsWon++;
-            }
-        }
-
-        return Integer.toString(player1HandsWon);
+        long player1Wins = readGames().stream().filter(Game::player1Wins).count();
+        return Long.toString(player1Wins);
     }
 
     private static List<Game> readGames() {

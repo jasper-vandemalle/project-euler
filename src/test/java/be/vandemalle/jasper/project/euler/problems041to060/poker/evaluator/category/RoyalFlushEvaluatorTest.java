@@ -23,12 +23,4 @@ public class RoyalFlushEvaluatorTest {
         List<Card> hand = Card.parseAll("AC KH QH JH TH");
         Assertions.assertFalse(new RoyalFlushEvaluator().isMatch(hand));
     }
-
-    @Test
-    public void testGetHighestCard() {
-        List<Card> hand = Card.parseAll("AH KH QH JH TH");
-        Assertions.assertEquals(
-                Card.parse("AH").value(),
-                new RoyalFlushEvaluator().getHighestCard(hand).value());
-    }
 }

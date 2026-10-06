@@ -14,14 +14,4 @@ public interface CategoryEvaluator {
      * @return <code>true</code> if the hand matches the category, <code>false</code> otherwise
      */
     boolean isMatch(List<Card> hand);
-
-    /**
-     * Get the highest card in the category.
-     *
-     * @param hand the hand (sorted)
-     * @return the highest card
-     */
-    default Card getHighestCard(List<Card> hand) {
-        return hand.get(0);
-    }
 }

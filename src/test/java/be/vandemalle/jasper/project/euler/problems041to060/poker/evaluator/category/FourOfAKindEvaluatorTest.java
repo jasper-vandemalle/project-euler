@@ -23,12 +23,4 @@ public class FourOfAKindEvaluatorTest {
         List<Card> hand = Card.parseAll("AH 7H 6C 6D 6S");
         Assertions.assertFalse(new FourOfAKindEvaluator().isMatch(hand));
     }
-
-    @Test
-    public void testGetHighestCard() {
-        List<Card> hand = Card.parseAll("AH 6H 6C 6D 6S");
-        Assertions.assertEquals(
-                Card.parse("6H").value(),
-                new FourOfAKindEvaluator().getHighestCard(hand).value());
-    }
 }

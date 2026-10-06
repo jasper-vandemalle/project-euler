@@ -1,70 +1,80 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
-import java.util.List;
-import org.junit.jupiter.api.Assertions;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.Category;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-/**
- * Testing the HandEvaluator.
- *
- * @author Jasper Vandemalle
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.HandEvaluator
- */
-public class HandEvaluatorTest {
-    @Test
-    public void testCompareOnePairOverHighCard() {
-        // Player 1: KING of SPADES, QUEEN of SPADES, NINE of HEARTS, FIVE of CLUBS, FIVE of DIAMONDS (ONE_PAIR, FIVE of
-        // CLUBS)
-        List<Card> player1Hand = Card.parseAll("KS QS 9H 5C 5D");
-        // Player 1: KING of HEARTS, QUEEN of HEARTS, NINE of SPADES, EIGHT of SPADES, FOUR of DIAMONDS (HIGH_PAIR, KING
-        // of SPADES)
-        List<Card> player2Hand = Card.parseAll("KH QH 9S 8S 4D");
-
-        // Player 1 wins!
-        int comparison = new HandEvaluator(player1Hand).compareTo(new HandEvaluator(player2Hand));
-        Assertions.assertTrue(comparison > 0);
+class HandEvaluatorTest {
+    @ParameterizedTest(name = "{0} is {1}")
+    @CsvSource({
+        "KS QS 9H 8H 5D, HIGH_CARD",
+        "KS QS 9H 5C 5D, ONE_PAIR",
+        "9C 9D 5H 5S KD, TWO_PAIRS",
+        "6H 6C 6D AS 2D, THREE_OF_A_KIND",
+        "9C 8D 7H 6S 5D, STRAIGHT",
+        "AH 6H 5H 3H 2H, FLUSH",
+        "TC TD TH 2S 2D, FULL_HOUSE",
+        "6H 6C 6D 6S AD, FOUR_OF_A_KIND",
+        "9H 8H 7H 6H 5H, STRAIGHT_FLUSH",
+        "AH KH QH JH TH, ROYAL_FLUSH",
+    })
+    void categorizesHands(String hand, Category category) {
+        assertEquals(category, new HandEvaluator(Card.parseAll(hand)).category());
     }
 
     @Test
-    public void testCompareHighCard() {
-        // Player 1: KING of SPADES, QUEEN of SPADES, NINE of HEARTS, EIGHT of HEARTS, FIVE of DIAMONDS (HIGH_CARD, KING
-        // of SPADES -> FIVE of DIAMONDS)
-        List<Card> player1Hand = Card.parseAll("KS QS 9H 8H 5D");
-        // Player 1: KING of HEARTS, QUEEN of HEARTS, NINE of SPADES, EIGHT of SPADES, FOUR of DIAMONDS (HIGH_CARD, KING
-        // of HEARTS -> FOUR of DIAMONDS)
-        List<Card> player2Hand = Card.parseAll("KH QH 9S 8S 4D");
-
-        // Player 1 wins!
-        int comparison = new HandEvaluator(player1Hand).compareTo(new HandEvaluator(player2Hand));
-        Assertions.assertTrue(comparison > 0);
+    void higherCategoryWins() {
+        assertWins("KS QS 9H 5C 5D", "KH QH 9S 8S 4D");
     }
 
     @Test
-    public void testCompareHighCardEqual() {
-        // Player 1: KING of SPADES, QUEEN of SPADES, NINE of HEARTS, EIGHT of HEARTS, FIVE of DIAMONDS (HIGH_CARD, KING
-        // of SPADES -> FIVE of DIAMONDS)
-        List<Card> player1Hand = Card.parseAll("KS QS 9H 8H 5D");
-        // Player 1: KING of HEARTS, QUEEN of HEARTS, NINE of SPADES, EIGHT of SPADES, FIVE of CLUBS (HIGH_CARD, KING of
-        // HEARTS -> FIVE of CLUBS)
-        List<Card> player2Hand = Card.parseAll("KH QH 9S 8S 5C");
-
-        // Draw
-        int comparison = new HandEvaluator(player1Hand).compareTo(new HandEvaluator(player2Hand));
-        Assertions.assertTrue(comparison == 0);
+    void highCardsAreComparedFromHighToLow() {
+        assertWins("KS QS 9H 8H 5D", "KH QH 9S 8S 4D");
     }
 
     @Test
-    public void testCompareOnePair() {
-        // Player 1: KING of SPADES, NINE of CLUBS, NINE of HEARTS, SEVEN of DIAMONDS, FIVE of HEARTS (ONE_PAIR, NINE of
-        // CLUBS)
-        List<Card> player1Hand = Card.parseAll("KS 9C 9H 7D 5D");
-        // Player 2: ACE of HEARTS, EIGHT of DIAMONDS, FIVE of DIAMONDS, FIVE of CLUBS, THREE of SPADES (ONE_PAIR, FIVE
-        // of DIAMONDS)
-        List<Card> player2Hand = Card.parseAll("AH 8D 5D 5C 3S");
+    void identicalValuesTie() {
+        assertTie("KS QS 9H 8H 5D", "KH QH 9S 8S 5C");
+    }
 
-        // PLayer 1 wins!
-        int comparison = new HandEvaluator(player1Hand).compareTo(new HandEvaluator(player2Hand));
-        Assertions.assertTrue(comparison > 0);
+    @Test
+    void higherPairWinsRegardlessOfKickers() {
+        assertWins("KS 9C 9H 7D 5D", "AH 8D 5D 5C 3S");
+    }
+
+    @Test
+    void equalPairsAreSettledByKickers() {
+        assertWins("9C 9H AD 4S 2C", "9D 9S KD QS JC");
+    }
+
+    @Test
+    void equalHighPairsAreSettledByTheSecondPair() {
+        assertWins("9H 9S 6C 6D 2H", "9C 9D 5H 5S KD");
+    }
+
+    @Test
+    void equalTwoPairsAreSettledByTheKicker() {
+        assertWins("9C 9D 5H 5S KD", "9H 9S 5C 5D QH");
+    }
+
+    @Test
+    void fullHousesAreComparedOnTheirThreeOfAKind() {
+        assertWins("TC TD TH 2S 2D", "9C 9D 9H AS AD");
+    }
+
+    private static void assertWins(String winner, String loser) {
+        var winning = new HandEvaluator(Card.parseAll(winner));
+        var losing = new HandEvaluator(Card.parseAll(loser));
+        assertTrue(winning.compareTo(losing) > 0, winner + " should beat " + loser);
+        assertTrue(losing.compareTo(winning) < 0, loser + " should lose to " + winner);
+    }
+
+    private static void assertTie(String hand, String other) {
+        assertEquals(0, new HandEvaluator(Card.parseAll(hand)).compareTo(new HandEvaluator(Card.parseAll(other))));
     }
 }

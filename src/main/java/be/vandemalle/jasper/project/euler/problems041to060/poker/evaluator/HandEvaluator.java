@@ -1,116 +1,94 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator;
 
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Category;
-import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.*;
-import java.util.*;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.Value;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.CategoryEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.FlushEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.FourOfAKindEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.FullHouseEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.HighCardEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.OnePairEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.RoyalFlushEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.StraightEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.StraightFlushEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.ThreeOfAKindEvaluator;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.TwoPairEvaluator;
+import java.util.Comparator;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * HandEvaluator evaluates a hand and determines the category and high card.
+ * Evaluates a hand: its category, plus the values that break ties between hands of that category.
  */
 public class HandEvaluator implements Comparable<HandEvaluator> {
-    /**
-     * A map of category evaluators.
-     */
-    private final Map<Category, CategoryEvaluator> categoryEvaluatorMap = new HashMap<>();
+    private static final Map<Category, CategoryEvaluator> EVALUATORS = new EnumMap<>(Map.of(
+            Category.HIGH_CARD, new HighCardEvaluator(),
+            Category.ONE_PAIR, new OnePairEvaluator(),
+            Category.TWO_PAIRS, new TwoPairEvaluator(),
+            Category.THREE_OF_A_KIND, new ThreeOfAKindEvaluator(),
+            Category.STRAIGHT, new StraightEvaluator(),
+            Category.FLUSH, new FlushEvaluator(),
+            Category.FULL_HOUSE, new FullHouseEvaluator(),
+            Category.FOUR_OF_A_KIND, new FourOfAKindEvaluator(),
+            Category.STRAIGHT_FLUSH, new StraightFlushEvaluator(),
+            Category.ROYAL_FLUSH, new RoyalFlushEvaluator()));
 
-    /**
-     * The highest category for the hand.
-     */
-    private Category highestCategory;
+    private final Category category;
 
-    /**
-     * The highest card in the category.
-     */
-    private Card highestCardInCategory;
-
-    /**
-     * The cards of the hand sorted from high to low.
-     */
-    private List<Card> highestCards;
+    private final List<Value> rankedValues;
 
     /**
      * Instantiate the hand evaluator.
      *
-     * @param hand the hand that will be evaluated
+     * @param hand the hand that will be evaluated, in any order
      */
     public HandEvaluator(List<Card> hand) {
-        initMap();
-        sortHand(hand);
-        findBest(highestCards);
+        List<Card> sortedHand = hand.stream().sorted(Card.BY_VALUE.reversed()).toList();
+
+        category = Category.getCategoryHighToLow().stream()
+                .filter(candidate -> EVALUATORS.get(candidate).isMatch(sortedHand))
+                .findFirst()
+                .orElseThrow();
+        rankedValues = rankValues(sortedHand);
     }
 
     /**
-     * Initialize a map of category evaluators.
+     * The distinct values of a hand in tie-breaking order: values that occur more often come first (the three of a
+     * kind in a full house before its pair, a pair before its kickers), then higher values before lower ones.
      */
-    private void initMap() {
-        categoryEvaluatorMap.put(Category.FLUSH, new FlushEvaluator());
-        categoryEvaluatorMap.put(Category.FOUR_OF_A_KIND, new FourOfAKindEvaluator());
-        categoryEvaluatorMap.put(Category.FULL_HOUSE, new FullHouseEvaluator());
-        categoryEvaluatorMap.put(Category.HIGH_CARD, new HighCardEvaluator());
-        categoryEvaluatorMap.put(Category.ONE_PAIR, new OnePairEvaluator());
-        categoryEvaluatorMap.put(Category.ROYAL_FLUSH, new RoyalFlushEvaluator());
-        categoryEvaluatorMap.put(Category.STRAIGHT, new StraightEvaluator());
-        categoryEvaluatorMap.put(Category.STRAIGHT_FLUSH, new StraightFlushEvaluator());
-        categoryEvaluatorMap.put(Category.THREE_OF_A_KIND, new ThreeOfAKindEvaluator());
-        categoryEvaluatorMap.put(Category.TWO_PAIRS, new TwoPairEvaluator());
+    private static List<Value> rankValues(List<Card> hand) {
+        Comparator<Map.Entry<Value, Long>> byCount = Map.Entry.comparingByValue();
+        Comparator<Map.Entry<Value, Long>> byValue = Map.Entry.comparingByKey();
+
+        return hand.stream().collect(groupingBy(Card::value, counting())).entrySet().stream()
+                .sorted(byCount.thenComparing(byValue).reversed())
+                .map(Map.Entry::getKey)
+                .toList();
     }
 
     /**
-     * Find the best hand category and high value.
+     * Get the hand's category.
      *
-     * @param hand the hand
+     * @return the highest category the hand matches
      */
-    private void findBest(List<Card> hand) {
-        for (Category category : Category.getCategoryHighToLow()) {
-            CategoryEvaluator evaluator = categoryEvaluatorMap.get(category);
-
-            if (evaluator.isMatch(hand)) {
-                highestCategory = category;
-                highestCardInCategory = evaluator.getHighestCard(hand);
-                break;
-            }
-        }
+    public Category category() {
+        return category;
     }
 
     /**
-     * Sort the hand.
-     *
-     * @param hand the hand
-     */
-    private void sortHand(List<Card> hand) {
-        highestCards = hand.stream().sorted(Card.BY_VALUE.reversed()).toList();
-    }
-
-    /**
-     * Get the highest category.
-     *
-     * @return the highest category
-     */
-    public Category getHighestCategory() {
-        return highestCategory;
-    }
-
-    /**
-     * Get the highest card in the category
-     *
-     * @return the highest card
-     */
-    public Card getHighestCardInCategory() {
-        return highestCardInCategory;
-    }
-
-    /**
-     * {@inheritDoc}
+     * Compare by category first; hands of the same category have the same shape, so their ranked values can then be
+     * compared one by one.
      */
     @Override
     public int compareTo(HandEvaluator that) {
-        int result = this.highestCategory.compareTo(that.highestCategory);
-        if (result == 0) {
-            result = Card.BY_VALUE.compare(this.highestCardInCategory, that.highestCardInCategory);
-        }
-        for (int i = 0; result == 0 && i < highestCards.size(); i++) {
-            result = Card.BY_VALUE.compare(this.highestCards.get(i), that.highestCards.get(i));
+        int result = this.category.compareTo(that.category);
+        for (int i = 0; result == 0 && i < rankedValues.size(); i++) {
+            result = this.rankedValues.get(i).compareTo(that.rankedValues.get(i));
         }
         return result;
     }

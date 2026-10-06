@@ -23,12 +23,4 @@ public class FlushEvaluatorTest {
         List<Card> hand = Card.parseAll("AC 6H 5H 3H 2H");
         Assertions.assertFalse(new FlushEvaluator().isMatch(hand));
     }
-
-    @Test
-    public void testGetHighestCard() {
-        List<Card> hand = Card.parseAll("AH 6H 5H 3H 2H");
-        Assertions.assertEquals(
-                Card.parse("AH").value(),
-                new FlushEvaluator().getHighestCard(hand).value());
-    }
 }

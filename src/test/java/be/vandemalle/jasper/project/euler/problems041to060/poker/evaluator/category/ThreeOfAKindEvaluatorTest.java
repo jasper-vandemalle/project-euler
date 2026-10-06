@@ -23,12 +23,4 @@ public class ThreeOfAKindEvaluatorTest {
         List<Card> hand = Card.parseAll("AH 7H 6C 6D 5S");
         Assertions.assertFalse(new ThreeOfAKindEvaluator().isMatch(hand));
     }
-
-    @Test
-    public void testGetHighestCard() {
-        List<Card> hand = Card.parseAll("AH 7H 6C 6D 6S");
-        Assertions.assertEquals(
-                Card.parse("6H").value(),
-                new ThreeOfAKindEvaluator().getHighestCard(hand).value());
-    }
 }

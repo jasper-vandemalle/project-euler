@@ -1,12 +1,10 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category;
 
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
-import be.vandemalle.jasper.project.euler.problems041to060.poker.Value;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * CategoryEvaluator for the categories that can be grouped by value.
@@ -19,36 +17,27 @@ import java.util.stream.Stream;
  * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#FOUR_OF_A_KIND
  */
 public abstract class AbstractGroupedValuesEvaluator implements CategoryEvaluator {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isMatch(List<Card> hand) {
-        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::value));
-        List<List<Card>> pairedCards = new ArrayList<>(pairedCardsMap.values());
-
-        Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == getGroupByValue());
-        return filter.count() > 0;
+        return countGroups(hand) > 0;
     }
 
     /**
-     * {@inheritDoc}
+     * Count the values that occur exactly {@link #getGroupByValue()} times in the hand.
+     *
+     * @param hand the hand
+     * @return the number of such groups
      */
-    @Override
-    public Card getHighestCard(List<Card> hand) {
-        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::value));
-        List<List<Card>> pairedCards = new ArrayList<>(pairedCardsMap.values());
-
-        Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == getGroupByValue());
-        return filter.max((c1, c2) -> Card.BY_VALUE.compare(c1.get(0), c2.get(0)))
-                .get()
-                .get(0);
+    protected long countGroups(List<Card> hand) {
+        return hand.stream().collect(groupingBy(Card::value, counting())).values().stream()
+                .filter(count -> count == getGroupByValue())
+                .count();
     }
 
     /**
      * Get the group by value.
      *
-     * @return the group by value
+     * @return how many cards of the same value make up a group
      */
     public abstract int getGroupByValue();
 }

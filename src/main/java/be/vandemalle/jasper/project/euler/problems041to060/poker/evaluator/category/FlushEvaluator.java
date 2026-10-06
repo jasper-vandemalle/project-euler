@@ -15,9 +15,6 @@ import java.util.stream.Stream;
  * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#FLUSH
  */
 public class FlushEvaluator implements CategoryEvaluator {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isMatch(List<Card> hand) {
         Map<Suit, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::suit));

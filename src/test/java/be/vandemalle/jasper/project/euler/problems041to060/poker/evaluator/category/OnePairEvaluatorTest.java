@@ -23,12 +23,4 @@ public class OnePairEvaluatorTest {
         List<Card> hand = Card.parseAll("AH 7H 6C 5D 4S");
         Assertions.assertFalse(new OnePairEvaluator().isMatch(hand));
     }
-
-    @Test
-    public void testGetHighestCard() {
-        List<Card> hand = Card.parseAll("AH 7H 7C 6D 6S");
-        Assertions.assertEquals(
-                Card.parse("7H").value(),
-                new OnePairEvaluator().getHighestCard(hand).value());
-    }
 }

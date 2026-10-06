@@ -7,9 +7,6 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.cate
  * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#ONE_PAIR
  */
 public class OnePairEvaluator extends AbstractGroupedValuesEvaluator {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int getGroupByValue() {
         return 2;

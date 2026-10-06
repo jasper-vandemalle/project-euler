@@ -12,9 +12,6 @@ import java.util.stream.Stream;
  * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#ROYAL_FLUSH
  */
 public class RoyalFlushEvaluator implements CategoryEvaluator {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isMatch(List<Card> hand) {
         Stream<Card> filter = hand.stream().filter(card -> card.value() == Value.ACE);

@@ -10,9 +10,6 @@ import java.util.List;
  * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#HIGH_CARD
  */
 public class HighCardEvaluator implements CategoryEvaluator {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isMatch(List<Card> hand) {
         return true;

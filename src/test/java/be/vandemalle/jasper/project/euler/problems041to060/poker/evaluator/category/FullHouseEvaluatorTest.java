@@ -23,12 +23,4 @@ public class FullHouseEvaluatorTest {
         List<Card> hand = Card.parseAll("AH 6H 6C 6D 6S");
         Assertions.assertFalse(new FullHouseEvaluator().isMatch(hand));
     }
-
-    @Test
-    public void testGetHighestCard() {
-        List<Card> hand = Card.parseAll("AH AC 6C 6D 6S");
-        Assertions.assertEquals(
-                Card.parse("6C").value(),
-                new FullHouseEvaluator().getHighestCard(hand).value());
-    }
 }

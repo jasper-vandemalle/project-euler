@@ -20,7 +20,7 @@ public class TwoPairEvaluator extends AbstractGroupedValuesEvaluator {
      */
     @Override
     public boolean isMatch(List<Card> hand) {
-        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::getValue));
+        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::value));
         List<List<Card>> pairedCards = new ArrayList<>(pairedCardsMap.values());
 
         Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == getGroupByValue());

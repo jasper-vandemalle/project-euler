@@ -14,13 +14,15 @@ import org.junit.jupiter.api.Test;
 public class HighCardEvaluatorTest {
     @Test
     public void testIsMatchHighCard() {
-        List<Card> hand = List.of(new Card("AH"), new Card("7H"), new Card("7C"), new Card("6D"), new Card("6S"));
+        List<Card> hand = Card.parseAll("AH 7H 7C 6D 6S");
         Assertions.assertTrue(new HighCardEvaluator().isMatch(hand));
     }
 
     @Test
     public void testGetHighestCard() {
-        List<Card> hand = List.of(new Card("AH"), new Card("7H"), new Card("7C"), new Card("6D"), new Card("6S"));
-        Assertions.assertEquals(new Card("AH"), new HighCardEvaluator().getHighestCard(hand));
+        List<Card> hand = Card.parseAll("AH 7H 7C 6D 6S");
+        Assertions.assertEquals(
+                Card.parse("AH").value(),
+                new HighCardEvaluator().getHighestCard(hand).value());
     }
 }

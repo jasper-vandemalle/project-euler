@@ -23,7 +23,7 @@ public class StraightEvaluator implements CategoryEvaluator {
             Card nextCard = hand.get(i + 1);
 
             // the value ordinal should be exactly one higher
-            if (card.getValue().ordinal() != nextCard.getValue().ordinal() + 1) {
+            if (card.value().ordinal() != nextCard.value().ordinal() + 1) {
                 straight = false;
                 break;
             }

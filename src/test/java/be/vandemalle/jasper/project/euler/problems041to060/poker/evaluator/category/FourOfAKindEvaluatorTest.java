@@ -14,19 +14,21 @@ import org.junit.jupiter.api.Test;
 public class FourOfAKindEvaluatorTest {
     @Test
     public void testIsMatchFour() {
-        List<Card> hand = List.of(new Card("AH"), new Card("6H"), new Card("6C"), new Card("6D"), new Card("6S"));
+        List<Card> hand = Card.parseAll("AH 6H 6C 6D 6S");
         Assertions.assertTrue(new FourOfAKindEvaluator().isMatch(hand));
     }
 
     @Test
     public void testIsMatchNoFour() {
-        List<Card> hand = List.of(new Card("AH"), new Card("7H"), new Card("6C"), new Card("6D"), new Card("6S"));
+        List<Card> hand = Card.parseAll("AH 7H 6C 6D 6S");
         Assertions.assertFalse(new FourOfAKindEvaluator().isMatch(hand));
     }
 
     @Test
     public void testGetHighestCard() {
-        List<Card> hand = List.of(new Card("AH"), new Card("6H"), new Card("6C"), new Card("6D"), new Card("6S"));
-        Assertions.assertEquals(new Card("6H"), new FourOfAKindEvaluator().getHighestCard(hand));
+        List<Card> hand = Card.parseAll("AH 6H 6C 6D 6S");
+        Assertions.assertEquals(
+                Card.parse("6H").value(),
+                new FourOfAKindEvaluator().getHighestCard(hand).value());
     }
 }

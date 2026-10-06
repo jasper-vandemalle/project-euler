@@ -4,7 +4,6 @@ import be.vandemalle.jasper.project.euler.Solvable;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Game;
 import be.vandemalle.jasper.project.euler.utils.Resources;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -41,7 +40,7 @@ public class Problem054 implements Solvable {
      * player 1 and the last five to player 2.
      */
     private static Game parseGame(String line) {
-        List<Card> cards = Arrays.stream(line.split(" ")).map(Card::new).toList();
+        List<Card> cards = Card.parseAll(line);
         return new Game(cards.subList(0, 5), cards.subList(5, 10));
     }
 }

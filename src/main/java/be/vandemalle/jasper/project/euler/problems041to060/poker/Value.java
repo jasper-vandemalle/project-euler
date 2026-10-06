@@ -28,7 +28,7 @@ public enum Value {
      *
      * @param code the code character
      */
-    private Value(char code) {
+    Value(char code) {
         this.code = code;
     }
 
@@ -37,13 +37,14 @@ public enum Value {
      *
      * @param code the code
      * @return the value
+     * @throws IllegalArgumentException if no value has this code
      */
-    public static Value getByCode(char code) {
-        for (Value v : Value.values()) {
+    public static Value fromCode(char code) {
+        for (Value v : values()) {
             if (v.code == code) {
                 return v;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unknown value code: " + code);
     }
 }

@@ -1,87 +1,47 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 /**
- * The card, containing a suit and value.
+ * A playing card.
+ *
+ * @param value the value, which is all that matters when ranking hands
+ * @param suit the suit
  */
-public class Card implements Comparable<Card> {
+public record Card(Value value, Suit suit) {
     /**
-     * The suit.
+     * Orders cards by value only, ignoring the suit.
      */
-    private Suit suit;
+    public static final Comparator<Card> BY_VALUE = Comparator.comparing(Card::value);
 
     /**
-     * The value.
-     */
-    private Value value;
-
-    /**
-     * Create a card by its code.
+     * Parse a two-character card code such as {@code TS} (ten of spades) or {@code 4H} (four of hearts).
      *
-     * @param cardCode the card code
+     * @param code the card code
+     * @return the card
+     * @throws IllegalArgumentException if the code is not a valid card
      */
-    public Card(String cardCode) {
-        suit = Suit.getByCode(cardCode.charAt(1));
-        value = Value.getByCode(cardCode.charAt(0));
+    public static Card parse(String code) {
+        if (code.length() != 2) {
+            throw new IllegalArgumentException("Not a card code: " + code);
+        }
+        return new Card(Value.fromCode(code.charAt(0)), Suit.fromCode(code.charAt(1)));
     }
 
     /**
-     * Get the suit.
+     * Parse space-separated card codes, such as {@code 8C TS KC 9H 4S}.
      *
-     * @return the suit
+     * @param codes the card codes
+     * @return the cards, in the given order
      */
-    public Suit getSuit() {
-        return suit;
+    public static List<Card> parseAll(String codes) {
+        return Arrays.stream(codes.trim().split(" ")).map(Card::parse).toList();
     }
 
-    /**
-     * Get the value.
-     *
-     * @return the value
-     */
-    public Value getValue() {
-        return value;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(value.name());
-        sb.append(" of ");
-        sb.append(suit.name());
-        return sb.toString();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int compareTo(Card that) {
-        return value.compareTo(that.value);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Card card = (Card) o;
-
-        if (value != card.value) return false;
-
-        return true;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
-        return value.hashCode();
+        return value + " of " + suit;
     }
 }

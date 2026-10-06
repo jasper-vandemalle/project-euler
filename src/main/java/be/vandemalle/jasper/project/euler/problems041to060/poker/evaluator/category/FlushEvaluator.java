@@ -20,7 +20,7 @@ public class FlushEvaluator implements CategoryEvaluator {
      */
     @Override
     public boolean isMatch(List<Card> hand) {
-        Map<Suit, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::getSuit));
+        Map<Suit, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::suit));
         List<List<Card>> pairedCards = new ArrayList<>(pairedCardsMap.values());
 
         Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == 5);

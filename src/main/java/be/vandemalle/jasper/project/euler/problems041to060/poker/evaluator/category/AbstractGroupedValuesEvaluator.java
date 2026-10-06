@@ -24,7 +24,7 @@ public abstract class AbstractGroupedValuesEvaluator implements CategoryEvaluato
      */
     @Override
     public boolean isMatch(List<Card> hand) {
-        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::getValue));
+        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::value));
         List<List<Card>> pairedCards = new ArrayList<>(pairedCardsMap.values());
 
         Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == getGroupByValue());
@@ -36,11 +36,13 @@ public abstract class AbstractGroupedValuesEvaluator implements CategoryEvaluato
      */
     @Override
     public Card getHighestCard(List<Card> hand) {
-        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::getValue));
+        Map<Value, List<Card>> pairedCardsMap = hand.stream().collect(Collectors.groupingBy(Card::value));
         List<List<Card>> pairedCards = new ArrayList<>(pairedCardsMap.values());
 
         Stream<List<Card>> filter = pairedCards.stream().filter(cards -> cards.size() == getGroupByValue());
-        return filter.max((c1, c2) -> c1.get(0).compareTo(c2.get(0))).get().get(0);
+        return filter.max((c1, c2) -> Card.BY_VALUE.compare(c1.get(0), c2.get(0)))
+                .get()
+                .get(0);
     }
 
     /**

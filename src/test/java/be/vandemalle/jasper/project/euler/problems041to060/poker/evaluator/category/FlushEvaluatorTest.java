@@ -14,19 +14,21 @@ import org.junit.jupiter.api.Test;
 public class FlushEvaluatorTest {
     @Test
     public void testIsMatchFullSuit() {
-        List<Card> hand = List.of(new Card("AH"), new Card("6H"), new Card("5H"), new Card("3H"), new Card("2H"));
+        List<Card> hand = Card.parseAll("AH 6H 5H 3H 2H");
         Assertions.assertTrue(new FlushEvaluator().isMatch(hand));
     }
 
     @Test
     public void testIsMatchNoFullSuit() {
-        List<Card> hand = List.of(new Card("AC"), new Card("6H"), new Card("5H"), new Card("3H"), new Card("2H"));
+        List<Card> hand = Card.parseAll("AC 6H 5H 3H 2H");
         Assertions.assertFalse(new FlushEvaluator().isMatch(hand));
     }
 
     @Test
     public void testGetHighestCard() {
-        List<Card> hand = List.of(new Card("AH"), new Card("6H"), new Card("5H"), new Card("3H"), new Card("2H"));
-        Assertions.assertEquals(new Card("AH"), new FlushEvaluator().getHighestCard(hand));
+        List<Card> hand = Card.parseAll("AH 6H 5H 3H 2H");
+        Assertions.assertEquals(
+                Card.parse("AH").value(),
+                new FlushEvaluator().getHighestCard(hand).value());
     }
 }

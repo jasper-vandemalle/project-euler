@@ -79,7 +79,7 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
      * @param hand the hand
      */
     private void sortHand(List<Card> hand) {
-        highestCards = hand.stream().sorted(Comparator.reverseOrder()).toList();
+        highestCards = hand.stream().sorted(Card.BY_VALUE.reversed()).toList();
     }
 
     /**
@@ -107,10 +107,10 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
     public int compareTo(HandEvaluator that) {
         int result = this.highestCategory.compareTo(that.highestCategory);
         if (result == 0) {
-            result = this.highestCardInCategory.compareTo(that.highestCardInCategory);
+            result = Card.BY_VALUE.compare(this.highestCardInCategory, that.highestCardInCategory);
         }
         for (int i = 0; result == 0 && i < highestCards.size(); i++) {
-            result = this.highestCards.get(i).compareTo(that.highestCards.get(i));
+            result = Card.BY_VALUE.compare(this.highestCards.get(i), that.highestCards.get(i));
         }
         return result;
     }

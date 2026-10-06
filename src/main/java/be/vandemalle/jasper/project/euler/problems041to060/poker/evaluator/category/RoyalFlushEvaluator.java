@@ -17,7 +17,7 @@ public class RoyalFlushEvaluator implements CategoryEvaluator {
      */
     @Override
     public boolean isMatch(List<Card> hand) {
-        Stream<Card> filter = hand.stream().filter(card -> card.getValue() == Value.ACE);
+        Stream<Card> filter = hand.stream().filter(card -> card.value() == Value.ACE);
         boolean ace = filter.count() > 0;
         boolean straightFlush = new StraightFlushEvaluator().isMatch(hand);
         return ace && straightFlush;

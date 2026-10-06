@@ -14,19 +14,21 @@ import org.junit.jupiter.api.Test;
 public class ThreeOfAKindEvaluatorTest {
     @Test
     public void testIsMatchThree() {
-        List<Card> hand = List.of(new Card("AH"), new Card("AC"), new Card("6C"), new Card("6D"), new Card("6S"));
+        List<Card> hand = Card.parseAll("AH AC 6C 6D 6S");
         Assertions.assertTrue(new ThreeOfAKindEvaluator().isMatch(hand));
     }
 
     @Test
     public void testIsMatchNoThree() {
-        List<Card> hand = List.of(new Card("AH"), new Card("7H"), new Card("6C"), new Card("6D"), new Card("5S"));
+        List<Card> hand = Card.parseAll("AH 7H 6C 6D 5S");
         Assertions.assertFalse(new ThreeOfAKindEvaluator().isMatch(hand));
     }
 
     @Test
     public void testGetHighestCard() {
-        List<Card> hand = List.of(new Card("AH"), new Card("7H"), new Card("6C"), new Card("6D"), new Card("6S"));
-        Assertions.assertEquals(new Card("6H"), new ThreeOfAKindEvaluator().getHighestCard(hand));
+        List<Card> hand = Card.parseAll("AH 7H 6C 6D 6S");
+        Assertions.assertEquals(
+                Card.parse("6H").value(),
+                new ThreeOfAKindEvaluator().getHighestCard(hand).value());
     }
 }

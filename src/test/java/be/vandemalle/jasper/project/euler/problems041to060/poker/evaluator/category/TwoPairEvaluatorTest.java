@@ -14,19 +14,21 @@ import org.junit.jupiter.api.Test;
 public class TwoPairEvaluatorTest {
     @Test
     public void testIsMatchTwoPair() {
-        List<Card> hand = List.of(new Card("AH"), new Card("7H"), new Card("7C"), new Card("6D"), new Card("6S"));
+        List<Card> hand = Card.parseAll("AH 7H 7C 6D 6S");
         Assertions.assertTrue(new TwoPairEvaluator().isMatch(hand));
     }
 
     @Test
     public void testIsMatchNoTwoPair() {
-        List<Card> hand = List.of(new Card("AH"), new Card("7H"), new Card("6C"), new Card("5D"), new Card("4S"));
+        List<Card> hand = Card.parseAll("AH 7H 6C 5D 4S");
         Assertions.assertFalse(new TwoPairEvaluator().isMatch(hand));
     }
 
     @Test
     public void testGetHighestCard() {
-        List<Card> hand = List.of(new Card("AH"), new Card("7H"), new Card("7C"), new Card("6D"), new Card("6S"));
-        Assertions.assertEquals(new Card("7H"), new TwoPairEvaluator().getHighestCard(hand));
+        List<Card> hand = Card.parseAll("AH 7H 7C 6D 6S");
+        Assertions.assertEquals(
+                Card.parse("7H").value(),
+                new TwoPairEvaluator().getHighestCard(hand).value());
     }
 }

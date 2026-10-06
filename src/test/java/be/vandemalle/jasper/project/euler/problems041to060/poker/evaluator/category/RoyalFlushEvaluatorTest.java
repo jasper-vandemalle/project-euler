@@ -14,19 +14,21 @@ import org.junit.jupiter.api.Test;
 public class RoyalFlushEvaluatorTest {
     @Test
     public void testIsMatchRoyalFlush() {
-        List<Card> hand = List.of(new Card("AH"), new Card("KH"), new Card("QH"), new Card("JH"), new Card("TH"));
+        List<Card> hand = Card.parseAll("AH KH QH JH TH");
         Assertions.assertTrue(new RoyalFlushEvaluator().isMatch(hand));
     }
 
     @Test
     public void testIsMatchNoRoyalFlush() {
-        List<Card> hand = List.of(new Card("AC"), new Card("KH"), new Card("QH"), new Card("JH"), new Card("TH"));
+        List<Card> hand = Card.parseAll("AC KH QH JH TH");
         Assertions.assertFalse(new RoyalFlushEvaluator().isMatch(hand));
     }
 
     @Test
     public void testGetHighestCard() {
-        List<Card> hand = List.of(new Card("AH"), new Card("KH"), new Card("QH"), new Card("JH"), new Card("TH"));
-        Assertions.assertEquals(new Card("AH"), new RoyalFlushEvaluator().getHighestCard(hand));
+        List<Card> hand = Card.parseAll("AH KH QH JH TH");
+        Assertions.assertEquals(
+                Card.parse("AH").value(),
+                new RoyalFlushEvaluator().getHighestCard(hand).value());
     }
 }

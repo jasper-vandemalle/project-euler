@@ -38,6 +38,9 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
             Category.STRAIGHT_FLUSH, new StraightFlushEvaluator(),
             Category.ROYAL_FLUSH, new RoyalFlushEvaluator()));
 
+    private static final List<Value> ACE_LOW_STRAIGHT =
+            List.of(Value.FIVE, Value.FOUR, Value.THREE, Value.TWO, Value.ACE);
+
     private final Category category;
 
     private final List<Value> rankedValues;
@@ -54,7 +57,8 @@ public class HandEvaluator implements Comparable<HandEvaluator> {
                 .filter(candidate -> EVALUATORS.get(candidate).isMatch(sortedHand))
                 .findFirst()
                 .orElseThrow();
-        rankedValues = rankValues(sortedHand);
+        // in an ace-low straight the ace is the lowest card, so a 6-high straight beats it
+        rankedValues = StraightEvaluator.isWheel(sortedHand) ? ACE_LOW_STRAIGHT : rankValues(sortedHand);
     }
 
     /**

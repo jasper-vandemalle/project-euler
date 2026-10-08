@@ -3,7 +3,6 @@ package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.cate
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Value;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * CategoryEvaluator for the 'royal flush' category.
@@ -14,9 +13,8 @@ import java.util.stream.Stream;
 public class RoyalFlushEvaluator implements CategoryEvaluator {
     @Override
     public boolean isMatch(List<Card> hand) {
-        Stream<Card> filter = hand.stream().filter(card -> card.value() == Value.ACE);
-        boolean ace = filter.count() > 0;
-        boolean straightFlush = new StraightFlushEvaluator().isMatch(hand);
-        return ace && straightFlush;
+        // checking for the ace alone would also match the ace-low straight flush, so look at the lowest card
+        boolean lowestCardIsTen = hand.getLast().value() == Value.TEN;
+        return lowestCardIsTen && new StraightFlushEvaluator().isMatch(hand);
     }
 }

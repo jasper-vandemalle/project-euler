@@ -1,26 +1,28 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
  * Testing the TwoPairEvaluator.
  *
  * @author Jasper Vandemalle
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.TwoPairEvaluator
+ * @see TwoPairEvaluator
  */
-public class TwoPairEvaluatorTest {
+class TwoPairEvaluatorTest {
     @Test
-    public void testIsMatchTwoPair() {
+    void isMatchTwoPair() {
         List<Card> hand = Card.parseAll("AH 7H 7C 6D 6S");
-        Assertions.assertTrue(new TwoPairEvaluator().isMatch(hand));
+        assertTrue(new TwoPairEvaluator().isMatch(hand));
     }
 
     @Test
-    public void testIsMatchNoTwoPair() {
+    void isMatchNoTwoPair() {
         List<Card> hand = Card.parseAll("AH 7H 6C 5D 4S");
-        Assertions.assertFalse(new TwoPairEvaluator().isMatch(hand));
+        assertFalse(new TwoPairEvaluator().isMatch(hand));
     }
 }

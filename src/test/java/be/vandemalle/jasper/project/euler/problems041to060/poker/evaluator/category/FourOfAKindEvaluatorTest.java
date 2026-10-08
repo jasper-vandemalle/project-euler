@@ -1,26 +1,28 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
  * Testing the FourOfAKindEvaluator.
  *
  * @author Jasper Vandemalle
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.FourOfAKindEvaluator
+ * @see FourOfAKindEvaluator
  */
-public class FourOfAKindEvaluatorTest {
+class FourOfAKindEvaluatorTest {
     @Test
-    public void testIsMatchFour() {
+    void isMatchFour() {
         List<Card> hand = Card.parseAll("AH 6H 6C 6D 6S");
-        Assertions.assertTrue(new FourOfAKindEvaluator().isMatch(hand));
+        assertTrue(new FourOfAKindEvaluator().isMatch(hand));
     }
 
     @Test
-    public void testIsMatchNoFour() {
+    void isMatchNoFour() {
         List<Card> hand = Card.parseAll("AH 7H 6C 6D 6S");
-        Assertions.assertFalse(new FourOfAKindEvaluator().isMatch(hand));
+        assertFalse(new FourOfAKindEvaluator().isMatch(hand));
     }
 }

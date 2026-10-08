@@ -11,7 +11,7 @@ public interface CategoryEvaluator {
      * Check if a hand matches a certain category.
      *
      * @param hand the hand (sorted)
-     * @return <code>true</code> if the hand matches the category, <code>false</code> otherwise
+     * @return {@code true} if the hand matches the category, {@code false} otherwise
      */
     boolean isMatch(List<Card> hand);
 }

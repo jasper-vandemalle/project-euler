@@ -1,13 +1,13 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category;
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.Category;
 import java.util.List;
 
 /**
  * CategoryEvaluator for the 'straight flush' category.
  *
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.CategoryEvaluator
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#STRAIGHT_FLUSH
+ * @see Category#STRAIGHT_FLUSH
  */
 public class StraightFlushEvaluator implements CategoryEvaluator {
     @Override

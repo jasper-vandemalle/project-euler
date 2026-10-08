@@ -4,17 +4,17 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.Category;
 import java.util.List;
 
 /**
  * CategoryEvaluator for the categories that can be grouped by value.
  * (one pair, two pairs, three of a kind and four of a kind)
  *
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category.CategoryEvaluator
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#ONE_PAIR
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#TWO_PAIRS
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#THREE_OF_A_KIND
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#FOUR_OF_A_KIND
+ * @see Category#ONE_PAIR
+ * @see Category#TWO_PAIRS
+ * @see Category#THREE_OF_A_KIND
+ * @see Category#FOUR_OF_A_KIND
  */
 public abstract class AbstractGroupedValuesEvaluator implements CategoryEvaluator {
     @Override

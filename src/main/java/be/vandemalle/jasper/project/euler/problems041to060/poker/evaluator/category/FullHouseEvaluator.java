@@ -1,13 +1,13 @@
 package be.vandemalle.jasper.project.euler.problems041to060.poker.evaluator.category;
 
 import be.vandemalle.jasper.project.euler.problems041to060.poker.Card;
+import be.vandemalle.jasper.project.euler.problems041to060.poker.Category;
 import java.util.List;
 
 /**
  * CategoryEvaluator for the 'full house' category.
  *
- * @see CategoryEvaluator
- * @see be.vandemalle.jasper.project.euler.problems041to060.poker.Category#FULL_HOUSE
+ * @see Category#FULL_HOUSE
  */
 public class FullHouseEvaluator implements CategoryEvaluator {
     @Override
